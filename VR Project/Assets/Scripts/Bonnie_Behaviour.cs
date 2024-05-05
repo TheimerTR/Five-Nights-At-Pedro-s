@@ -69,7 +69,7 @@ public class Bonnie_Behaviour : MonoBehaviour
             {
                 if (!isSave)
                 {
-                    Debug.Log("YOU ARE DEAD");
+                    //Debug.Log("YOU ARE DEAD");
                     jumpscare.Play();
                 }
             } 
@@ -91,7 +91,7 @@ public class Bonnie_Behaviour : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                Debug.Log("YOU ARE SAVE");
+                //Debug.Log("YOU ARE SAVE");
                 isSave = true;
             }
         }
