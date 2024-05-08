@@ -8,6 +8,7 @@ public class Bonnie_Behaviour : MonoBehaviour
     public Light spotLight;
     public Animator anim;
     public GameObject bonnie;
+
     public AudioSource knok_knok;
     public AudioSource growl;
     public AudioSource jumpscare;
@@ -61,6 +62,7 @@ public class Bonnie_Behaviour : MonoBehaviour
         if (t_deactivate > 5f)
         {
             spotLight.enabled = true;
+
             anim.SetBool("Open", true);
 
             canKill = true;
