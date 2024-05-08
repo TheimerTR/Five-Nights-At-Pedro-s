@@ -13,6 +13,10 @@ public class Chica_Behaviour : MonoBehaviour
     Animator animator; 
     public List<VideoClip> videoClipList;
     public AudioSource chicaScreamer;
+
+    public Light eye_R;
+    public Light eye_L;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +41,22 @@ public class Chica_Behaviour : MonoBehaviour
                 time = 0.0f;
             }
         }
+
         if (angry) 
         {
+            eye_R.color = Color.red;
+            eye_L.color = Color.red;
+
             time += Time.deltaTime;
             if (time > timeForKill) 
             {
                 Kill();
             }
+        }
+        else
+        {
+            eye_R.color = Color.white;
+            eye_L.color = Color.white;
         }
     }
 

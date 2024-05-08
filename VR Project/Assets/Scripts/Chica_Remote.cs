@@ -16,9 +16,15 @@ public class Chica_Remote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(false) 
+        if (Input.GetKeyDown(KeyCode.T))
         {
+            Debug.Log("Chica Kill");
             chicaBehaviour.ChangeChannel();
         }
+    }
+
+    public void ChangeCH()
+    {
+        chicaBehaviour.ChangeChannel();
     }
 }
