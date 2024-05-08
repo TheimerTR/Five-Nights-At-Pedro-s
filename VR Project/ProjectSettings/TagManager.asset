@@ -7,6 +7,7 @@ TagManager:
   - SaveZone
   - StopPuppet
   - PuppetKill
+  - Interactuables
   layers:
   - Default
   - TransparentFX

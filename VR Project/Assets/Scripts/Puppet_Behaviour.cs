@@ -57,7 +57,7 @@ public class Puppet_Behaviour : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag != "StopPuppet")
+        if (other.tag != "StopPuppet" && other.tag != "Interactuables")
         {
             isBeeingPushed = true;
         }
@@ -83,7 +83,7 @@ public class Puppet_Behaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != "StopPuppet")
+        if (other.tag != "StopPuppet" && other.tag != "Interactuables")
         {
             isBeeingPushed = false;
         }
