@@ -7,10 +7,14 @@ public class SixAM : MonoBehaviour
     Animator anim;
     public bool win;
 
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+
         win = false;
     }
 
@@ -19,7 +23,10 @@ public class SixAM : MonoBehaviour
     {
         if (win)
         {
+            audio.Play();
             Debug.Log("YOU WON!");
+
+            win = false;
         }
     }
 
