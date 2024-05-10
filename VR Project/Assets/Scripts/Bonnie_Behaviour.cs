@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Bonnie_Behaviour : MonoBehaviour
 {
+    public SixAM isHour;
+
     public Light spotLight;
     public Animator anim;
     public GameObject bonnie;
@@ -15,6 +17,8 @@ public class Bonnie_Behaviour : MonoBehaviour
 
     public float t_activate;
     public float t_deactivate;
+
+    public float time_to_activate = 0;
 
     public bool canKill;
     public bool isSave;
@@ -37,12 +41,42 @@ public class Bonnie_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isHour.Zero_AM)
+        {
+            time_to_activate = 40f;
+        }
+        
+        if (isHour.One_AM)
+        {
+            time_to_activate = 30f;
+        } 
+        
+        if (isHour.Two_AM)
+        {
+            time_to_activate = 25f;
+        }
+        
+        if (isHour.Three_AM)
+        {
+            time_to_activate = 20f;
+        }
+        
+        if (isHour.Four_AM)
+        {
+            time_to_activate = 15f;
+        }
+        
+        if (isHour.Five_AM)
+        {
+            time_to_activate = 10f;
+        }
+
         if (t_deactivate == 0)
         {
             t_activate += Time.deltaTime;
         }
 
-        if (t_activate > 10f) 
+        if (t_activate > time_to_activate) 
         { 
             if(t_deactivate == 0f)
             {

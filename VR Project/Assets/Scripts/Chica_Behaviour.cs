@@ -8,6 +8,7 @@ public class Chica_Behaviour : MonoBehaviour
 {
     [SerializeField] bool angry;
     float time;
+
     public float timeForClipChange;
     public float timeForKill;
     public VideoPlayer tv;
@@ -88,6 +89,8 @@ public class Chica_Behaviour : MonoBehaviour
             if (time > timeForKill) 
             {
                 Kill();
+                time = 0;
+                angry = false;
             }
         }
         else
@@ -104,6 +107,7 @@ public class Chica_Behaviour : MonoBehaviour
             tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
             timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
             time = 0;
+            angry = false;
         }
         else 
         {

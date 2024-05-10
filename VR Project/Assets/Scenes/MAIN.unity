@@ -8927,7 +8927,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0.055
+  - 0.03
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -9189,7 +9189,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.17, y: 0.16, z: 0.29}
+  m_Size: {x: 0.07, y: 0.07, z: 0.29}
   m_Center: {x: 0, y: 0, z: 0.12}
 --- !u!1 &1100768950
 GameObject:
@@ -11707,6 +11707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00df8e648b1dc9f4ab89b5f3da7144dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHour: {fileID: 919132147710694791}
   spotLight: {fileID: 1851370387}
   anim: {fileID: 904870298}
   bonnie: {fileID: 1799625058}
@@ -11715,6 +11716,7 @@ MonoBehaviour:
   jumpscare: {fileID: 1961691541}
   t_activate: 0
   t_deactivate: 0
+  time_to_activate: 0
   canKill: 0
   isSave: 0
 --- !u!1 &1411018237
@@ -21873,7 +21875,7 @@ MonoBehaviour:
   eye_R: {fileID: 335311706}
   eye_L: {fileID: 1258502698}
   minWaitTimeForAdd: 10
-  maxWaitTimeForAdd: 80
+  maxWaitTimeForAdd: 70
   timeToNextAd: 0
 --- !u!4 &1960776907
 Transform:
@@ -28020,6 +28022,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   win: 0
+  Zero_AM: 0
+  One_AM: 0
+  Two_AM: 0
+  Three_AM: 0
+  Four_AM: 0
+  Five_AM: 0
 --- !u!82 &919132147710694792
 AudioSource:
   m_ObjectHideFlags: 0
