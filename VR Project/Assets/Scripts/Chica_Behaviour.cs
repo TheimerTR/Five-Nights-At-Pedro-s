@@ -41,40 +41,40 @@ public class Chica_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHour.Zero_AM)
+        if (isHour.currentHour == SixAM.Hour.ZERO_AM)
         {
             minWaitTimeForAdd = 20f;
-            maxWaitTimeForAdd = 80f;
+            maxWaitTimeForAdd = 40f;
         }
         
-        if (isHour.One_AM)
+        if (isHour.currentHour == SixAM.Hour.ONE_AM)
         {
             minWaitTimeForAdd = 15f;
-            maxWaitTimeForAdd = 70f;
-        }
-        
-        if (isHour.Two_AM)
-        {
-            minWaitTimeForAdd = 10f;
-            maxWaitTimeForAdd = 60f;
-        }
-        
-        if (isHour.Three_AM)
-        {
-            minWaitTimeForAdd = 10f;
-            maxWaitTimeForAdd = 50f;
-        }
-        
-        if (isHour.Four_AM)
-        {
-            minWaitTimeForAdd = 10f;
             maxWaitTimeForAdd = 40f;
-        } 
+        }
         
-        if (isHour.Five_AM)
+        if (isHour.currentHour == SixAM.Hour.TWO_AM)
+        {
+            minWaitTimeForAdd = 15f;
+            maxWaitTimeForAdd = 30f;
+        }
+        
+        if (isHour.currentHour == SixAM.Hour.THREE_AM)
         {
             minWaitTimeForAdd = 10f;
             maxWaitTimeForAdd = 30f;
+        }
+        
+        if (isHour.currentHour == SixAM.Hour.FOUR_AM)
+        {
+            minWaitTimeForAdd = 10f;
+            maxWaitTimeForAdd = 20f;
+        } 
+        
+        if (isHour.currentHour == SixAM.Hour.FIVE_AM)
+        {
+            minWaitTimeForAdd = 8f;
+            maxWaitTimeForAdd = 25f;
         }
 
         if (Input.GetKeyDown(KeyCode.V))

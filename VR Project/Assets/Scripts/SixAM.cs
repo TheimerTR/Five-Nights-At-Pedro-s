@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,18 @@ public class SixAM : MonoBehaviour
 
     AudioSource audio;
 
-    public bool Zero_AM;
-    public bool One_AM;
-    public bool Two_AM;
-    public bool Three_AM;
-    public bool Four_AM;
-    public bool Five_AM;
+    public enum Hour 
+    {
+        ZERO_AM,
+        ONE_AM,
+        TWO_AM,
+        THREE_AM,
+        FOUR_AM,
+        FIVE_AM,
+        SIX_AM,
+    }
+
+    public Hour currentHour;
 
     public GameObject rain;
     public AudioSource rainSound;
@@ -48,12 +55,7 @@ public class SixAM : MonoBehaviour
 
         win = false;
 
-        Zero_AM = true;
-        One_AM = false;
-        Two_AM = false;
-        Three_AM = false;
-        Four_AM = false;
-        Five_AM = false;
+        currentHour = Hour.ZERO_AM;
     }
 
     // Update is called once per frame
@@ -99,56 +101,26 @@ public class SixAM : MonoBehaviour
 
     public void isZeroAM() 
     {
-        Zero_AM = true;
-        One_AM = false;
-        Two_AM = false;
-        Three_AM = false;
-        Four_AM = false;
-        Five_AM = false;
+        currentHour = Hour.ZERO_AM;
     }
     public void isOneAM() 
     {
-        Zero_AM = false;
-        One_AM = true;
-        Two_AM = false;
-        Three_AM = false;
-        Four_AM = false;
-        Five_AM = false;
+        currentHour = Hour.ONE_AM;
     }
     public void isTwoAM() 
     {
-        Zero_AM = false;
-        One_AM = false;
-        Two_AM = true;
-        Three_AM = false;
-        Four_AM = false;
-        Five_AM = false;
+        currentHour = Hour.TWO_AM;
     }
     public void isThreeAM() 
     {
-        Zero_AM = false;
-        One_AM = false;
-        Two_AM = false;
-        Three_AM = true;
-        Four_AM = false;
-        Five_AM = false;
+        currentHour = Hour.THREE_AM;
     }
     public void isFourAM() 
     {
-        Zero_AM = false;
-        One_AM = false;
-        Two_AM = false;
-        Three_AM = false;
-        Four_AM = true;
-        Five_AM = false;
+        currentHour = Hour.FOUR_AM;
     }
     public void isFiveAM() 
     {
-        Zero_AM = false;
-        One_AM = false;
-        Two_AM = false;
-        Three_AM = false;
-        Four_AM = false;
-        Five_AM = true;
+        currentHour = Hour.FIVE_AM;
     }
 }
