@@ -5,16 +5,44 @@ using UnityEngine.UIElements;
 
 public class Freddy_Behaviour : MonoBehaviour
 {
-    public List<Vector3> FreddyList;
+    public List<Vector3> FreddyListRandomPositions;
+    Vector3[] positionShelve; //This are their positions of oriigin for when then return to the shelve
+    public GameObject[] plushies;
+    public int plushesOutOfShelve;
+
+
+    float time;
+    public List<float> firstChangePerHour; //Tiempo que tarda el primer muñeco en salir del estante
+    public List<float> extraChangePerHour; //Tiempo que tardan los siguientes muñecos en salir una vez salio el primero.
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        positionShelve = new Vector3[3];
+        positionShelve[0] = new Vector3(-4.35f,0f,0f);
+        positionShelve[1] = Vector3.zero;
+        positionShelve[2] = new Vector3(4.35f, 0f, 0f);
+
+        plushesOutOfShelve = 0;
+
+        time = 0.0f;   
     }
 
     // Update is called once per frame
     void Update()
     {
+        time = Time.deltaTime;
+
+        if(0 < plushesOutOfShelve) 
+        {
+            if(time > 0.0f) 
+            {
+            
+            }
+        }
+        else 
+        {
         
+        }
     }
 }
