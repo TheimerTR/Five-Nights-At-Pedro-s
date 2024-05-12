@@ -6,6 +6,8 @@ using static Unity.VisualScripting.Member;
 
 public class Chica_Behaviour : MonoBehaviour
 {
+    public SixAM isHour;
+
     [SerializeField] bool angry;
     float time;
 
@@ -13,7 +15,7 @@ public class Chica_Behaviour : MonoBehaviour
     public float timeForKill;
     public VideoPlayer tv;
 
-    Animator animator; 
+    Animator animator;
     public VideoClip[] videoClipList;
     public VideoClip[] AddsClipList;
     public AudioSource Growl;
@@ -22,7 +24,7 @@ public class Chica_Behaviour : MonoBehaviour
     public Light eye_R;
     public Light eye_L;
 
-    public float minWaitTimeForAdd = 0f;
+    public float minWaitTimeForAdd = 20f;
     public float maxWaitTimeForAdd = 80f;
     public float timeToNextAd = 0f;
 
@@ -39,6 +41,42 @@ public class Chica_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isHour.Zero_AM)
+        {
+            minWaitTimeForAdd = 20f;
+            maxWaitTimeForAdd = 80f;
+        }
+        
+        if (isHour.One_AM)
+        {
+            minWaitTimeForAdd = 15f;
+            maxWaitTimeForAdd = 70f;
+        }
+        
+        if (isHour.Two_AM)
+        {
+            minWaitTimeForAdd = 10f;
+            maxWaitTimeForAdd = 60f;
+        }
+        
+        if (isHour.Three_AM)
+        {
+            minWaitTimeForAdd = 10f;
+            maxWaitTimeForAdd = 50f;
+        }
+        
+        if (isHour.Four_AM)
+        {
+            minWaitTimeForAdd = 10f;
+            maxWaitTimeForAdd = 40f;
+        } 
+        
+        if (isHour.Five_AM)
+        {
+            minWaitTimeForAdd = 10f;
+            maxWaitTimeForAdd = 30f;
+        }
+
         if (Input.GetKeyDown(KeyCode.V))
         {
             angry = !angry;

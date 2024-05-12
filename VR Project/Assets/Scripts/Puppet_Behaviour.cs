@@ -5,6 +5,7 @@ using UnityEngine;
 public class Puppet_Behaviour : MonoBehaviour
 {
     public float speed;
+    public float DownSpeed;
 
     public bool isBeeingPushed;
     public bool stopPushing;
@@ -23,10 +24,10 @@ public class Puppet_Behaviour : MonoBehaviour
     void Update()
     {
         if (!isBeeingPushed && !stopPushing && !puppetKill)
-            gameObject.transform.localPosition += new Vector3(0, speed, 0);
+            gameObject.transform.localPosition += new Vector3(0, speed * 0.00001f, 0);
 
         if (isBeeingPushed && !stopPushing && !puppetKill)
-            gameObject.transform.localPosition += new Vector3(0, -speed * 10, 0);
+            gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
 
         if (puppetKill)
         {

@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Video;
 
 public class SixAM : MonoBehaviour
 {
     Animator anim;
     public bool win;
+
+    public VideoPlayer tv;
+    public VideoClip isSixAM_Video;
+
+    public Light directionalLight;
 
     AudioSource audio;
 
@@ -17,9 +24,25 @@ public class SixAM : MonoBehaviour
     public bool Four_AM;
     public bool Five_AM;
 
+    public GameObject rain;
+    public AudioSource rainSound;
+    public AudioSource AmbientSound;
+    public AudioSource MusicSound;
+
+    Color Night;
+    Color Day;
+
+    public float DayTimer = 0;
+
+    public float TimeTransition;
+
     // Start is called before the first frame update
     void Start()
     {
+        Night = new Color(0.09692062f, 0.1262041f, 0.2075472f, 1f);
+        Day = new Color(0.8113208f, 0.6888272f, 0.4324493f, 1f);
+        directionalLight.color = Night;
+
         anim = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
 
@@ -36,12 +59,36 @@ public class SixAM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            win = true;
+        }
+
         if (win)
         {
+            tv.clip = isSixAM_Video;
+            tv.SetDirectAudioVolume(0, 0);
             audio.Play();
-            Debug.Log("YOU WON!");
 
-            win = false;
+            rain.SetActive(false);
+            rainSound.Stop();
+            AmbientSound.Stop();
+            MusicSound.Stop();
+
+            if(DayTimer < 1)
+            {
+                DayTimer += Time.deltaTime / TimeTransition;
+
+                directionalLight.color = Color.Lerp(Night, Day, DayTimer);
+
+
+                Debug.Log("YOU WON!");
+            }
+
+            if(DayTimer >= 1)
+            {
+                win = false;
+            }
         }
     }
 
