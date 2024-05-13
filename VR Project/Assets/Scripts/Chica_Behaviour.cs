@@ -35,6 +35,8 @@ public class Chica_Behaviour : MonoBehaviour
         time = 0.0f;
         timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
 
+        animator = GetComponent<Animator>();
+
         tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
     }
 
@@ -86,10 +88,12 @@ public class Chica_Behaviour : MonoBehaviour
             if (!angry)
             {
                 tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
+                animator.SetBool("isAngry", false);
             }
             else
             {
                 tv.clip = AddsClipList[Random.Range(0, AddsClipList.Length)];
+                animator.SetBool("isAngry", true);
             }
         }
 
@@ -99,6 +103,7 @@ public class Chica_Behaviour : MonoBehaviour
         {
             tv.clip = AddsClipList[Random.Range(0, AddsClipList.Length)];
             Growl.Play();
+            animator.SetBool("isAngry", true);
 
             time = 0;
             angry = true;
@@ -135,6 +140,7 @@ public class Chica_Behaviour : MonoBehaviour
         {
             eye_R.color = Color.white;
             eye_L.color = Color.white;
+            animator.SetBool("isAngry", false);
         }
     }
 
