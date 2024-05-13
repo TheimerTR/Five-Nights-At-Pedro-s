@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Freddy_Behaviour : MonoBehaviour
 {
-    public List<Vector3> FreddyListRandomPositions;
+    //public List<Vector3> FreddyListRandomPositions;
+    public GameObject FreddyListRandomPositions;
     Vector3[] positionShelve; //This are their positions of oriigin for when then return to the shelve
     public GameObject[] plushies;
     public int plushesOutOfShelve;
     List<int> positionsPlushies; //Lista posiciones plushies para no repetir.
 
-    float time;
+    [SerializeField]float time;
 
     public SixAM isHour;
 
@@ -27,6 +29,8 @@ public class Freddy_Behaviour : MonoBehaviour
         positionShelve[1] = Vector3.zero;
         positionShelve[2] = new Vector3(4.35f, 0f, 0f);
 
+        positionsPlushies = new List<int>();
+
         plushesOutOfShelve = 0;
 
         time = 0.0f;   
@@ -35,7 +39,7 @@ public class Freddy_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = Time.deltaTime;
+        time += Time.deltaTime;
 
         if (plushesOutOfShelve > 2) //If all plushies are out of the shelve
         {
@@ -46,22 +50,29 @@ public class Freddy_Behaviour : MonoBehaviour
             if(extraChangePerHour[(int)isHour.currentHour] < time) 
             {
                 RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out another plushie call the function
+                time = 0.0f;
             }
         }
         else 
         {
             if (firstChangePerHour[(int)isHour.currentHour] < time)
             {
+                Debug.Log("Mini fredies go");
                 RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out the first plushie call the function
+                time = 0.0f;
             }
         }
     }
 
     private void RandomPosPlushies(GameObject go)
     {
+        List<GameObject> list = new List<GameObject>();
+        FreddyListRandomPositions.GetChildGameObjects(list);
+
         plushesOutOfShelve++;
-        int pos = Random.Range(0,positionShelve.Length);
+        int pos = Random.Range(0,list.Count);
         bool checkAgain = true;
+        if(positionsPlushies.Count == 0) { checkAgain = false; }
         while(checkAgain)  //Check de que no se repitan
         { 
             for(int i = 0; i < positionsPlushies.Count; i++) 
@@ -73,7 +84,8 @@ public class Freddy_Behaviour : MonoBehaviour
             }
         }
 
-        go.transform.position = FreddyListRandomPositions[pos];
+        go.transform.position = list[pos].transform.position;
+        go.transform.rotation = list[pos].transform.rotation;
         positionsPlushies.Add(pos);
 
         
