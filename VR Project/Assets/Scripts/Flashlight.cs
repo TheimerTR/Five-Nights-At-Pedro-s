@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flashlight : MonoBehaviour
 {
     public bool On;
+    public bool deactivated;
 
     public Light spotlight;
     public GameObject colliderDetector;
@@ -13,6 +14,7 @@ public class Flashlight : MonoBehaviour
     void Start()
     {
         On = true;
+        deactivated = false;
         colliderDetector.SetActive(true);
         spotlight.enabled = true;
     }
@@ -20,9 +22,10 @@ public class Flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (deactivated) { On =  false; }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            SwitchLight();
+            if (!deactivated) { SwitchLight(); }
         }
     }
 

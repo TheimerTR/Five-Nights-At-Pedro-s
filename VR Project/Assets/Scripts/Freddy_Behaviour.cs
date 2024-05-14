@@ -21,6 +21,10 @@ public class Freddy_Behaviour : MonoBehaviour
     public List<float> firstChangePerHour; //Tiempo que tarda el primer muñeco en salir del estante
     public List<float> extraChangePerHour; //Tiempo que tardan los siguientes muñecos en salir una vez salio el primero.
 
+    //Efectos nocivos
+    public Flashlight flashlightReferece;
+    public List<GameObject> ligthsToTurnOff;
+    float timeSwitchLigths;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,10 +47,40 @@ public class Freddy_Behaviour : MonoBehaviour
 
         if (plushesOutOfShelve > 2) //If all plushies are out of the shelve
         {
+            flashlightReferece.deactivated = true;
+            if (time > 15.0f) 
+            {
+                Debug.Log("Plushies Killed You");
+            }
             //Kill player.
         }
         else if(0 < plushesOutOfShelve) 
         {
+            flashlightReferece.deactivated = false;
+            //Debuff based on num plushies out
+            if (2 == plushesOutOfShelve)
+            {
+                for (int i = 0;i < ligthsToTurnOff.Count; i++) 
+                {
+                    ligthsToTurnOff[i].SetActive(false);
+                }
+            }
+            else if (1 == plushesOutOfShelve) 
+            {
+                timeSwitchLigths += Time.deltaTime;
+                if (timeSwitchLigths>0.75f)
+                {
+                    for (int i = 0; i < ligthsToTurnOff.Count; i++)
+                    {
+
+                        ligthsToTurnOff[i].SetActive(!ligthsToTurnOff[i].active);
+                        timeSwitchLigths = 0;
+
+                    }
+                }
+                
+            }
+
             if(extraChangePerHour[(int)isHour.currentHour] < time) 
             {
                 RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out another plushie call the function
@@ -58,10 +92,12 @@ public class Freddy_Behaviour : MonoBehaviour
             if (firstChangePerHour[(int)isHour.currentHour] < time)
             {
                 Debug.Log("Mini fredies go");
-                RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out the first plushie call the function
                 time = 0.0f;
+                RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out the first plushie call the function
+                
             }
         }
+
     }
 
     private void RandomPosPlushies(GameObject go)
@@ -73,13 +109,22 @@ public class Freddy_Behaviour : MonoBehaviour
         int pos = Random.Range(0,list.Count);
         bool checkAgain = true;
         if(positionsPlushies.Count == 0) { checkAgain = false; }
-        while(checkAgain)  //Check de que no se repitan
+
+        int check = 0;
+        while(checkAgain && check<10)  //Check de que no se repitan
         { 
+            check++;
             for(int i = 0; i < positionsPlushies.Count; i++) 
             {
-                if (positionsPlushies[i] == pos) 
+                if (positionsPlushies[i] != pos)
                 {
                     checkAgain = false;
+                    //break;
+                }
+                else 
+                {
+                    checkAgain = true;
+                    pos = Random.Range(0, list.Count);
                 }
             }
         }
