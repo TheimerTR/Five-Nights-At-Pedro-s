@@ -21141,7 +21141,7 @@ GameObject:
   - component: {fileID: 2102313008}
   - component: {fileID: 2102313009}
   m_Layer: 0
-  m_Name: Light
+  m_Name: Light Lampara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26053,6 +26053,7 @@ MonoBehaviour:
   flashlightReferece: {fileID: 3469287837767289938}
   ligthsToTurnOff:
   - {fileID: 1380462518}
+  - {fileID: 2102313007}
 --- !u!1 &919132147607993362
 GameObject:
   m_ObjectHideFlags: 0
