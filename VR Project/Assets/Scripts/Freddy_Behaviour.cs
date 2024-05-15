@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Freddy_Behaviour : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Freddy_Behaviour : MonoBehaviour
     public int plushesOutOfShelve;
     List<int> positionsPlushies; //Lista posiciones plushies para no repetir.
 
-    [SerializeField]float time;
+    public float time;
 
     public SixAM isHour;
 
@@ -60,27 +61,35 @@ public class Freddy_Behaviour : MonoBehaviour
             //Debuff based on num plushies out
             if (2 == plushesOutOfShelve)
             {
-                for (int i = 0;i < ligthsToTurnOff.Count; i++) 
+                for (int i = 0; i < ligthsToTurnOff.Count; i++)
                 {
                     ligthsToTurnOff[i].SetActive(false);
                 }
             }
-            else if (1 == plushesOutOfShelve) 
+            else if (1 == plushesOutOfShelve)
             {
                 timeSwitchLigths += Time.deltaTime;
-                if (timeSwitchLigths>0.75f)
+
+                if (timeSwitchLigths > 0.75f)
                 {
                     for (int i = 0; i < ligthsToTurnOff.Count; i++)
                     {
-
-                        ligthsToTurnOff[i].SetActive(!ligthsToTurnOff[i].active);
-                        timeSwitchLigths = 0;
-
+                        if (Random.Range(0, 2) == 0)
+                        {
+                            ligthsToTurnOff[i].SetActive(false);
+                            timeSwitchLigths = 0;
+                        }
                     }
                 }
-                
-            }
 
+                for (int i = 0; i < ligthsToTurnOff.Count; i++)
+                {
+                    if (!ligthsToTurnOff[i].active && timeSwitchLigths >= 0.3f)
+                    {
+                        ligthsToTurnOff[i].SetActive(true);
+                    }
+                }
+            }
             if(extraChangePerHour[(int)isHour.currentHour] < time) 
             {
                 RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out another plushie call the function
@@ -94,7 +103,6 @@ public class Freddy_Behaviour : MonoBehaviour
                 Debug.Log("Mini fredies go");
                 time = 0.0f;
                 RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out the first plushie call the function
-                
             }
         }
 
@@ -131,8 +139,8 @@ public class Freddy_Behaviour : MonoBehaviour
 
         go.transform.position = list[pos].transform.position;
         go.transform.rotation = list[pos].transform.rotation;
+        XRGrabInteractable xr = go.GetComponent<XRGrabInteractable>();
+        xr.enabled = true;
         positionsPlushies.Add(pos);
-
-        
     }
 }

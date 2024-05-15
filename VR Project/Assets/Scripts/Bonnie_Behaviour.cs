@@ -41,34 +41,28 @@ public class Bonnie_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHour.currentHour == SixAM.Hour.ZERO_AM)
+        switch (isHour.currentHour) 
         {
-            time_to_activate = 40f;
-        }
-        
-        if (isHour.currentHour == SixAM.Hour.ONE_AM)
-        {
-            time_to_activate = 30f;
-        } 
-        
-        if (isHour.currentHour == SixAM.Hour.TWO_AM)
-        {
-            time_to_activate = 25f;
-        }
-        
-        if (isHour.currentHour == SixAM.Hour.THREE_AM)
-        {
-            time_to_activate = 20f;
-        }
-        
-        if (isHour.currentHour == SixAM.Hour.FOUR_AM)
-        {
-            time_to_activate = 15f;
-        }
-        
-        if (isHour.currentHour == SixAM.Hour.FIVE_AM)
-        {
-            time_to_activate = 10f;
+            case SixAM.Hour.ZERO_AM: 
+                time_to_activate = 40f;
+                break;
+            case SixAM.Hour.ONE_AM: 
+                time_to_activate = 30f;
+                break;
+            case SixAM.Hour.TWO_AM:
+                time_to_activate = 25f;
+                break;
+            case SixAM.Hour.THREE_AM:
+                time_to_activate = 20f;
+                break;
+            case SixAM.Hour.FOUR_AM: 
+                time_to_activate = 15f;
+                break;
+            case SixAM.Hour.FIVE_AM:
+                time_to_activate = 12f;
+                break;
+            default: 
+                break;
         }
 
         if (t_deactivate == 0)

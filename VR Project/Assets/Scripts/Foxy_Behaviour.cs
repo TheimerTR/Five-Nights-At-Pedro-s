@@ -8,10 +8,18 @@ public class Foxy_Behaviour : MonoBehaviour
     public Transform[] SpawnPoint;
 
     public float TimeToAppear;
+    public float WaitTime;
     public float TimeToKill;
     public float Timer = 0;
 
+    public int Flashed;
+
     bool HasApperared;
+
+    public SixAM isHour;
+
+    public AudioSource Jumpscare;
+    public AudioSource Scratch;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +33,64 @@ public class Foxy_Behaviour : MonoBehaviour
     {
         Timer += Time.deltaTime;
 
-        if(Timer > TimeToAppear && !HasApperared)
+        switch (isHour.currentHour)
+        {
+            case SixAM.Hour.ZERO_AM:
+                TimeToAppear = 30f;
+                break;
+            case SixAM.Hour.ONE_AM:
+                TimeToAppear = 26f;
+                break;
+            case SixAM.Hour.TWO_AM:
+                TimeToAppear = 24f;
+                break;
+            case SixAM.Hour.THREE_AM:
+                TimeToAppear = 20f;
+                break;
+            case SixAM.Hour.FOUR_AM:
+                TimeToAppear = 19f;
+                break;
+            case SixAM.Hour.FIVE_AM:
+                TimeToAppear = 18f;
+                break;
+            default:
+                break;
+        }
+
+        if (Timer > TimeToAppear && !HasApperared)
         {
             HasApperared = true;
+            Flashed = 0;
+            Scratch.Play();
 
             Foxy.SetActive(true);
-            Foxy.transform.position = SpawnPoint[Random.RandomRange(0, SpawnPoint.Length)].position;
-            Foxy.transform.rotation = SpawnPoint[Random.RandomRange(0, SpawnPoint.Length)].rotation;
+            transform.position = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+            transform.rotation = SpawnPoint[Random.Range(0, SpawnPoint.Length)].rotation;
+            
+            WaitTime = Timer + TimeToKill;
+        }
+
+        if(Flashed >= 5 && HasApperared)
+        {
+            HasApperared = false;
+            Timer = 0;
+            Flashed = 0;
+            Foxy.SetActive(false);
+        }
+
+        if(Timer > WaitTime && HasApperared)
+        {
+            Jumpscare.Play();
+            Debug.Log("FoxyKill!");
+            Timer = 0;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Foxy_FlashLight")
+        {
+            Flashed++;
         }
     }
 }

@@ -8,6 +8,9 @@ TagManager:
   - StopPuppet
   - PuppetKill
   - Interactuables
+  - Foxy_FlashLight
+  - IsInShelve
+  - IsOut
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Interactuable
-  - Foxy_FlashLight
+  - 
   - 
   - 
   - 
