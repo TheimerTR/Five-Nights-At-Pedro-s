@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static SixAM;
+using static UnityEngine.XR.OpenXR.Features.Interactions.DPadInteraction;
 
 public class Puppet_Behaviour : MonoBehaviour
 {
@@ -11,6 +14,13 @@ public class Puppet_Behaviour : MonoBehaviour
     public bool stopPushing;
 
     public bool puppetKill;
+
+    public SixAM isHour;
+    public AudioSource Jumpscare;
+
+    bool dead = false;
+    float passScene = 0f;
+    public GameObject chica_Jumpscare;
 
     // Start is called before the first frame update
     void Start()
@@ -23,60 +33,82 @@ public class Puppet_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isBeeingPushed && !stopPushing && !puppetKill)
-            gameObject.transform.localPosition += new Vector3(0, speed * 0.00001f, 0);
-
-        if (isBeeingPushed && !stopPushing && !puppetKill)
-            gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
-
-        if (puppetKill)
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            isBeeingPushed = false;
-            Debug.Log("DEAD");
+            if (dead)
+            {
+                passScene += Time.deltaTime;
+
+                if (passScene > 1.5f)
+                {
+                    SceneManager.LoadScene("Dead");
+                }
+            }
+
+            if (!isBeeingPushed && !stopPushing && !puppetKill)
+                gameObject.transform.localPosition += new Vector3(0, speed * 0.00001f, 0);
+
+            if (isBeeingPushed && !stopPushing && !puppetKill)
+                gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
+
+            if (puppetKill)
+            {
+                dead = true;
+                chica_Jumpscare.SetActive(true);
+                Jumpscare.Play();
+                isBeeingPushed = false;
+                Debug.Log("DEAD");
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "StopPuppet")
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            if (isBeeingPushed)
+            if (other.tag == "StopPuppet")
             {
-                stopPushing = true;
+                if (isBeeingPushed)
+                {
+                    stopPushing = true;
+                }
+                else
+                {
+                    stopPushing = false;
+                }
             }
-            else
-            {
-                stopPushing = false;
-            }
-        }
 
-        if(other.tag == "PuppetKill")
-        {
-            puppetKill = true;
+            if (other.tag == "PuppetKill")
+            {
+                puppetKill = true;
+            }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag != "StopPuppet" && other.tag != "Interactuables")
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            isBeeingPushed = true;
-        }
-
-        if (isBeeingPushed)
-        {
-            if (other.tag == "StopPuppet")
+            if (other.tag != "StopPuppet" && other.tag != "Interactuables" && other.tag != "Foxy_FlashLight")
             {
-                stopPushing = true;
-                isBeeingPushed = false;
+                isBeeingPushed = true;
             }
-        }
-        else
-        {
-            if (other.tag == "StopPuppet")
+
+            if (isBeeingPushed)
             {
-                stopPushing = false;
-                isBeeingPushed = false;
+                if (other.tag == "StopPuppet")
+                {
+                    stopPushing = true;
+                    isBeeingPushed = false;
+                }
+            }
+            else
+            {
+                if (other.tag == "StopPuppet")
+                {
+                    stopPushing = false;
+                    isBeeingPushed = false;
+                }
             }
         }
 
@@ -84,9 +116,12 @@ public class Puppet_Behaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag != "StopPuppet" && other.tag != "Interactuables")
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            isBeeingPushed = false;
+            if (other.tag != "StopPuppet" && other.tag != "Interactuables" && other.tag != "Foxy_FlashLight")
+            {
+                isBeeingPushed = false;
+            }
         }
     }
 }

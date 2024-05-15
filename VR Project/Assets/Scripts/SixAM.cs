@@ -97,6 +97,7 @@ public class SixAM : MonoBehaviour
     public void isSixAM()
     {
         win = true;
+        currentHour = Hour.SIX_AM;
     }
 
     public void isZeroAM() 

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using static SixAM;
 
 public class Chica_Remote : MonoBehaviour
 {
     public GameObject chica;
     Chica_Behaviour chicaBehaviour;
+    public SixAM isHour;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,15 +19,21 @@ public class Chica_Remote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            Debug.Log("Chica Kill");
-            chicaBehaviour.ChangeChannel();
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Debug.Log("Chica Kill");
+                chicaBehaviour.ChangeChannel();
+            }
         }
     }
 
     public void ChangeCH()
     {
-        chicaBehaviour.ChangeChannel();
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
+        {
+            chicaBehaviour.ChangeChannel();
+        }
     }
 }

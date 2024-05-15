@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.XR.OpenXR.Features.Interactions.DPadInteraction;
+using UnityEngine.SceneManagement;
 
 public class Bonnie_Behaviour : MonoBehaviour
 {
@@ -23,6 +25,10 @@ public class Bonnie_Behaviour : MonoBehaviour
     public bool canKill;
     public bool isSave;
 
+    bool dead = false;
+    float passScene = 0f;
+    public GameObject chica_Jumpscare;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,94 +47,115 @@ public class Bonnie_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (isHour.currentHour) 
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            case SixAM.Hour.ZERO_AM: 
-                time_to_activate = 40f;
-                break;
-            case SixAM.Hour.ONE_AM: 
-                time_to_activate = 30f;
-                break;
-            case SixAM.Hour.TWO_AM:
-                time_to_activate = 25f;
-                break;
-            case SixAM.Hour.THREE_AM:
-                time_to_activate = 20f;
-                break;
-            case SixAM.Hour.FOUR_AM: 
-                time_to_activate = 15f;
-                break;
-            case SixAM.Hour.FIVE_AM:
-                time_to_activate = 12f;
-                break;
-            default: 
-                break;
-        }
-
-        if (t_deactivate == 0)
-        {
-            t_activate += Time.deltaTime;
-        }
-
-        if (t_activate > time_to_activate) 
-        { 
-            if(t_deactivate == 0f)
+            if (dead)
             {
-                knok_knok.Play();
+                passScene += Time.deltaTime;
 
-                bonnie.SetActive(true);
-            }
-
-            if(t_deactivate >= 0.5f && t_deactivate <= 0.7f)
-            {
-                growl.Play();
-            }
-
-            t_deactivate += Time.deltaTime;
-        }
-
-        if (t_deactivate > 5f)
-        {
-            spotLight.enabled = true;
-
-            anim.SetBool("Open", true);
-
-            canKill = true;
-
-            if (t_deactivate > 5.1f)
-            {
-                if (!isSave)
+                if (passScene > 1.5f)
                 {
-                    //Debug.Log("YOU ARE DEAD");
-                    jumpscare.Play();
+                    SceneManager.LoadScene("Dead");
                 }
-            } 
+            }
 
-            if (t_deactivate > 6.2f)
+            switch (isHour.currentHour)
             {
-                anim.SetBool("Open", false);
-                spotLight.enabled = false;
-                canKill = false;
-                t_activate = 0f;
-                t_deactivate = 0f;
+                case SixAM.Hour.ZERO_AM:
+                    time_to_activate = 40f;
+                    break;
+                case SixAM.Hour.ONE_AM:
+                    time_to_activate = 30f;
+                    break;
+                case SixAM.Hour.TWO_AM:
+                    time_to_activate = 25f;
+                    break;
+                case SixAM.Hour.THREE_AM:
+                    time_to_activate = 20f;
+                    break;
+                case SixAM.Hour.FOUR_AM:
+                    time_to_activate = 15f;
+                    break;
+                case SixAM.Hour.FIVE_AM:
+                    time_to_activate = 12f;
+                    break;
+                default:
+                    break;
+            }
+
+            if (t_deactivate == 0)
+            {
+                t_activate += Time.deltaTime;
+            }
+
+            if (t_activate > time_to_activate)
+            {
+                if (t_deactivate == 0f)
+                {
+                    knok_knok.Play();
+
+                    bonnie.SetActive(true);
+                }
+
+                if (t_deactivate >= 0.5f && t_deactivate <= 0.7f)
+                {
+                    growl.Play();
+                }
+
+                t_deactivate += Time.deltaTime;
+            }
+
+            if (t_deactivate > 5f)
+            {
+                spotLight.enabled = true;
+
+                anim.SetBool("Open", true);
+
+                canKill = true;
+
+                if (t_deactivate > 5.02f)
+                {
+                    if (!isSave)
+                    {
+                        //Debug.Log("YOU ARE DEAD");
+                        dead = true;
+                        chica_Jumpscare.SetActive(true);
+                        jumpscare.Play();
+                    }
+                }
+
+                if (t_deactivate > 6.2f)
+                {
+                    anim.SetBool("Open", false);
+                    spotLight.enabled = false;
+                    canKill = false;
+                    t_activate = 0f;
+                    t_deactivate = 0f;
+                }
             }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (canKill)
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            if (other.tag == "Player")
+            if (canKill)
             {
-                //Debug.Log("YOU ARE SAVE");
-                isSave = true;
+                if (other.tag == "Player")
+                {
+                    //Debug.Log("YOU ARE SAVE");
+                    isSave = true;
+                }
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isSave = false;
+        if (isHour.currentHour != SixAM.Hour.SIX_AM)
+        {
+            isSave = false;
+        }
     }
 }
