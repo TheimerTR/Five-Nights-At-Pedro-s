@@ -8601,7 +8601,7 @@ GameObject:
   - component: {fileID: 1136830159}
   - component: {fileID: 1136830160}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Point Light Lampara Esquina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9748,6 +9748,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3127728407712097238, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3127728407712097239, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 64
@@ -9811,6 +9815,26 @@ PrefabInstance:
     - target: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7713493
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57691526
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7713493
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.29902
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014170783728641054, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.198
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21500,7 +21524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0632f83fa9a9349899ca3c8b35c8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   DownSpeed: 20
   isBeeingPushed: 0
   stopPushing: 0
@@ -24242,7 +24266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149155182251}
   m_LocalRotation: {x: -0.6991085, y: 0.10605368, z: 0.10605368, w: 0.6991085}
-  m_LocalPosition: {x: 9.942027, y: 30.770128, z: -5.644827}
+  m_LocalPosition: {x: 9.942027, y: 30.766, z: -5.644827}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26054,6 +26078,7 @@ MonoBehaviour:
   ligthsToTurnOff:
   - {fileID: 1380462518}
   - {fileID: 2102313007}
+  - {fileID: 1136830158}
 --- !u!1 &919132147607993362
 GameObject:
   m_ObjectHideFlags: 0
@@ -36749,8 +36774,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0059253033, y: 0.02621071, z: 0.002587018}
-  m_Center: {x: 0.00000011922954, y: -0.0007886925, z: 0.00057281763}
+  m_Size: {x: 0.02925303, y: 0.04621071, z: 0.02258702}
+  m_Center: {x: 0.00000011922954, y: -0.0007886925, z: 0.010282}
 --- !u!114 &3469287837482247096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52296,7 +52321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7465190987348300368
 Transform:
   m_ObjectHideFlags: 0

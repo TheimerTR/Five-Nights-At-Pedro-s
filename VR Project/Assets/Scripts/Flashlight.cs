@@ -22,7 +22,11 @@ public class Flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (deactivated) { On =  false; }
+        if (deactivated) 
+        { 
+            On =  false;
+            spotlight.enabled = false;
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (!deactivated) { SwitchLight(); }
@@ -31,17 +35,21 @@ public class Flashlight : MonoBehaviour
 
     public void SwitchLight()
     {
-        On = !On;
+        if (!deactivated) 
+        {
+            On = !On;
 
-        if (On)
-        {
-            colliderDetector.SetActive(true);
-            spotlight.enabled = true;
+            if (On)
+            {
+                colliderDetector.SetActive(true);
+                spotlight.enabled = true;
+            }
+            else
+            {
+                colliderDetector.SetActive(false);
+                spotlight.enabled = false;
+            }
         }
-        else
-        {
-            colliderDetector.SetActive(false);
-            spotlight.enabled = false;
-        }
+            
     }
 }
