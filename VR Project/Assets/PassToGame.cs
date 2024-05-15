@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ReturnFromDie : MonoBehaviour
+public class PassToGame : MonoBehaviour
 {
-    float timerToReturn = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +14,11 @@ public class ReturnFromDie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timerToReturn += Time.deltaTime;
+        
+    }
 
-        if(timerToReturn > 10)
-        {
-            SceneManager.LoadScene("Tutorial");
-            timerToReturn = 0;
-        }
+    public void PassToScene()
+    {
+        SceneManager.LoadScene("MAIN");
     }
 }
