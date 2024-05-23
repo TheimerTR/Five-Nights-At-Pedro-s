@@ -10,8 +10,9 @@ public class Freddy_Behaviour : MonoBehaviour
 {
     //public List<Vector3> FreddyListRandomPositions;
     public GameObject FreddyListRandomPositions;
-    Vector3[] positionShelve; //This are their positions of oriigin for when then return to the shelve
+    public Vector3[] positionShelve; //This are their positions of oriigin for when then return to the shelve
     public GameObject[] plushies;
+    public bool[] plushiesOut;
     public int plushesOutOfShelve;
     List<int> positionsPlushies; //Lista posiciones plushies para no repetir.
 
@@ -32,9 +33,14 @@ public class Freddy_Behaviour : MonoBehaviour
     void Start()
     {
         positionShelve = new Vector3[3];
-        positionShelve[0] = new Vector3(-4.35f,0f,0f);
-        positionShelve[1] = Vector3.zero;
-        positionShelve[2] = new Vector3(4.35f, 0f, 0f);
+        plushiesOut = new bool[3];
+        for (int i = 0; i < plushiesOut.Length; i++) 
+        {
+            plushiesOut[i] = false;
+        }
+        positionShelve[0] = new Vector3(-3.5f, 0.2f,0f);
+        positionShelve[1] = new Vector3(0f, 0.2f, 0f);
+        positionShelve[2] = new Vector3(3.5f, 0.2f, 0f);
 
         positionsPlushies = new List<int>();
 
@@ -106,7 +112,21 @@ public class Freddy_Behaviour : MonoBehaviour
                 {
                     Debug.Log("Mini fredies go");
                     time = 0.0f;
-                    RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out the first plushie call the function
+                    int PlushToSendOut = -1;
+                    for (int i = 0;i < plushiesOut.Length;i++) 
+                    {
+                        if (!plushiesOut[i]) 
+                        {
+                            PlushToSendOut = i;
+                            plushiesOut[i] = true;
+                            break;
+                        }
+                    }
+                    if(PlushToSendOut != -1) 
+                    {
+                        RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
+                    }
+                    
                 }
             }
         }
@@ -147,7 +167,9 @@ public class Freddy_Behaviour : MonoBehaviour
         go.transform.position = list[pos].transform.position;
         go.transform.rotation = list[pos].transform.rotation;
         XRGrabInteractable xr = go.GetComponent<XRGrabInteractable>();
+        MiniFreddy_Behaviour plush = go.GetComponent<MiniFreddy_Behaviour>();
         xr.enabled = true;
+        plush.isOut = true;
         positionsPlushies.Add(pos);
     }
 }

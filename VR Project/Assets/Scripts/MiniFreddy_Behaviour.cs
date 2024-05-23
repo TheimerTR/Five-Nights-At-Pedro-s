@@ -8,6 +8,7 @@ public class MiniFreddy_Behaviour : MonoBehaviour
     public bool isOut;
     public Freddy_Behaviour freddy;
     XRGrabInteractable interactable;
+    public int plushieNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,13 @@ public class MiniFreddy_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isOut) 
+        {
+            if(Input.GetKeyDown(KeyCode.F)) 
+            {
+                transform.position = freddy.positionShelve[plushieNumber];
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,9 +35,11 @@ public class MiniFreddy_Behaviour : MonoBehaviour
         {
             if (other.tag == "IsInShelve")
             {
+                freddy.plushiesOut[plushieNumber] = false;
                 freddy.plushesOutOfShelve--;
                 freddy.time = 0.0f;
                 interactable.enabled = false;
+                transform.position = freddy.positionShelve[plushieNumber];
             }
         }
     }
