@@ -138,8 +138,8 @@ public class Foxy_Behaviour : MonoBehaviour
                 HasApperared = false;
                 Timer = 0;
                 Flashed = 0;
-                Foxy.SetActive(false);
                 Growl.Play();
+                gameObject.SetActive(false);
             }
 
             if (Timer > WaitTime && HasApperared)
