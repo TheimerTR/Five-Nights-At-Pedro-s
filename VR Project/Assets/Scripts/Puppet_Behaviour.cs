@@ -22,6 +22,8 @@ public class Puppet_Behaviour : MonoBehaviour
     float passScene = 0f;
     public GameObject chica_Jumpscare;
 
+    public bool isTutorial = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,33 +35,46 @@ public class Puppet_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHour.currentHour != SixAM.Hour.SIX_AM)
+        if (!isTutorial)
         {
-            if (dead)
+            if (isHour.currentHour != SixAM.Hour.SIX_AM)
             {
-                passScene += Time.deltaTime;
-
-                if (passScene > 1.5f)
+                if (dead)
                 {
-                    SceneManager.LoadScene("Dead");
+                    passScene += Time.deltaTime;
+
+                    if (passScene > 1.5f)
+                    {
+                        SceneManager.LoadScene("Dead");
+                    }
+                }
+
+                PushPuppet();
+
+                if (puppetKill)
+                {
+                    dead = true;
+                    chica_Jumpscare.SetActive(true);
+                    Jumpscare.Play();
+                    isBeeingPushed = false;
+                    Debug.Log("DEAD");
                 }
             }
-
-            if (!isBeeingPushed && !stopPushing && !puppetKill)
-                gameObject.transform.localPosition += new Vector3(0, speed * 0.00001f, 0);
-
-            if (isBeeingPushed && !stopPushing && !puppetKill)
-                gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
-
-            if (puppetKill)
-            {
-                dead = true;
-                chica_Jumpscare.SetActive(true);
-                Jumpscare.Play();
-                isBeeingPushed = false;
-                Debug.Log("DEAD");
-            }
         }
+
+        else
+        {
+            PushPuppet();
+        }
+    }
+
+    private void PushPuppet() // Puppet push logic
+    {
+        if (!isBeeingPushed && !stopPushing && !puppetKill)
+            gameObject.transform.localPosition += new Vector3(0, speed * 0.00001f, 0);
+
+        if (isBeeingPushed && !stopPushing && !puppetKill)
+            gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
     }
 
     void OnTriggerEnter(Collider other)

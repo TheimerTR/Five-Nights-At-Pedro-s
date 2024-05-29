@@ -30,6 +30,8 @@ public class Foxy_Behaviour : MonoBehaviour
     float passScene = 0f;
     public GameObject chica_Jumpscare;
 
+    public bool isTutorial = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,43 +42,83 @@ public class Foxy_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHour.currentHour != SixAM.Hour.SIX_AM)
+        if (!isTutorial)
         {
-            if (dead)
+            if (isHour.currentHour != SixAM.Hour.SIX_AM)
             {
-                passScene += Time.deltaTime;
-
-                if (passScene > 1.5f)
+                if (dead)
                 {
-                    SceneManager.LoadScene("Dead");
+                    passScene += Time.deltaTime;
+
+                    if (passScene > 1.5f)
+                    {
+                        SceneManager.LoadScene("Dead");
+                    }
+                }
+
+                Timer += Time.deltaTime;
+
+                switch (isHour.currentHour)
+                {
+                    case SixAM.Hour.ZERO_AM:
+                        TimeToAppear = 30f;
+                        break;
+                    case SixAM.Hour.ONE_AM:
+                        TimeToAppear = 26f;
+                        break;
+                    case SixAM.Hour.TWO_AM:
+                        TimeToAppear = 24f;
+                        break;
+                    case SixAM.Hour.THREE_AM:
+                        TimeToAppear = 20f;
+                        break;
+                    case SixAM.Hour.FOUR_AM:
+                        TimeToAppear = 19f;
+                        break;
+                    case SixAM.Hour.FIVE_AM:
+                        TimeToAppear = 18f;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (Timer > TimeToAppear && !HasApperared)
+                {
+                    HasApperared = true;
+                    Flashed = 0;
+                    Scratch.Play();
+
+                    Foxy.SetActive(true);
+                    transform.position = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+                    transform.rotation = SpawnPoint[Random.Range(0, SpawnPoint.Length)].rotation;
+
+                    WaitTime = Timer + TimeToKill;
+                }
+
+                if (Flashed >= 5 && HasApperared)
+                {
+                    HasApperared = false;
+                    Timer = 0;
+                    Flashed = 0;
+                    Foxy.SetActive(false);
+                    Growl.Play();
+                }
+
+                if (Timer > WaitTime && HasApperared)
+                {
+                    dead = true;
+                    chica_Jumpscare.SetActive(true);
+                    Jumpscare.Play();
+                    Debug.Log("FoxyKill!");
+                    Timer = 0;
                 }
             }
+        }
 
+        else
+        {
             Timer += Time.deltaTime;
-
-            switch (isHour.currentHour)
-            {
-                case SixAM.Hour.ZERO_AM:
-                    TimeToAppear = 30f;
-                    break;
-                case SixAM.Hour.ONE_AM:
-                    TimeToAppear = 26f;
-                    break;
-                case SixAM.Hour.TWO_AM:
-                    TimeToAppear = 24f;
-                    break;
-                case SixAM.Hour.THREE_AM:
-                    TimeToAppear = 20f;
-                    break;
-                case SixAM.Hour.FOUR_AM:
-                    TimeToAppear = 19f;
-                    break;
-                case SixAM.Hour.FIVE_AM:
-                    TimeToAppear = 18f;
-                    break;
-                default:
-                    break;
-            }
+            TimeToAppear = 5f;
 
             if (Timer > TimeToAppear && !HasApperared)
             {
@@ -102,18 +144,18 @@ public class Foxy_Behaviour : MonoBehaviour
 
             if (Timer > WaitTime && HasApperared)
             {
-                dead = true;
-                chica_Jumpscare.SetActive(true);
-                Jumpscare.Play();
-                Debug.Log("FoxyKill!");
-                Timer = 0;
+                //dead = true;
+                //chica_Jumpscare.SetActive(true);
+                //Jumpscare.Play();
+                //Debug.Log("FoxyKill!");
+                //Timer = 0;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Foxy_FlashLight")
+        if (other.tag == "Foxy_FlashLight")
         {
             animator.SetTrigger("IsFlashed");
             Flashed++;

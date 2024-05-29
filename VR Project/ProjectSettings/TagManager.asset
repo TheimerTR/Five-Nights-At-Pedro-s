@@ -11,6 +11,11 @@ TagManager:
   - Foxy_FlashLight
   - IsInShelve
   - IsOut
+  - Bonnie
+  - Foxy
+  - Puppet
+  - Chica
+  - Freddy
   layers:
   - Default
   - TransparentFX

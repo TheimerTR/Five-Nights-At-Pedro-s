@@ -29,6 +29,9 @@ public class Bonnie_Behaviour : MonoBehaviour
     float passScene = 0f;
     public GameObject chica_Jumpscare;
 
+    // Tutorial
+    public bool isTutorial = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,41 +50,100 @@ public class Bonnie_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHour.currentHour != SixAM.Hour.SIX_AM)
+        if (!isTutorial)
         {
-            if (dead)
+            if (isHour.currentHour != SixAM.Hour.SIX_AM) // normal behaviour
             {
-                passScene += Time.deltaTime;
-
-                if (passScene > 1.5f)
+                if (dead)
                 {
-                    SceneManager.LoadScene("Dead");
+                    passScene += Time.deltaTime;
+
+                    if (passScene > 1.5f)
+                    {
+                        SceneManager.LoadScene("Dead");
+                    }
+                }
+
+                switch (isHour.currentHour)
+                {
+                    case SixAM.Hour.ZERO_AM:
+                        time_to_activate = 40f;
+                        break;
+                    case SixAM.Hour.ONE_AM:
+                        time_to_activate = 30f;
+                        break;
+                    case SixAM.Hour.TWO_AM:
+                        time_to_activate = 25f;
+                        break;
+                    case SixAM.Hour.THREE_AM:
+                        time_to_activate = 20f;
+                        break;
+                    case SixAM.Hour.FOUR_AM:
+                        time_to_activate = 15f;
+                        break;
+                    case SixAM.Hour.FIVE_AM:
+                        time_to_activate = 12f;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (t_deactivate == 0)
+                {
+                    t_activate += Time.deltaTime;
+                }
+
+                if (t_activate > time_to_activate)
+                {
+                    if (t_deactivate == 0f)
+                    {
+                        knok_knok.Play();
+
+                        bonnie.SetActive(true);
+                    }
+
+                    if (t_deactivate >= 0.5f && t_deactivate <= 0.7f)
+                    {
+                        growl.Play();
+                    }
+
+                    t_deactivate += Time.deltaTime;
+                }
+
+                if (t_deactivate > 5f)
+                {
+                    spotLight.enabled = true;
+
+                    anim.SetBool("Open", true);
+
+                    canKill = true;
+
+                    if (t_deactivate > 5.02f)
+                    {
+                        if (!isSave)
+                        {
+                            //Debug.Log("YOU ARE DEAD");
+                            dead = true;
+                            chica_Jumpscare.SetActive(true);
+                            jumpscare.Play();
+                        }
+                    }
+
+                    if (t_deactivate > 6.2f)
+                    {
+                        anim.SetBool("Open", false);
+                        spotLight.enabled = false;
+                        canKill = false;
+                        t_activate = 0f;
+                        t_deactivate = 0f;
+                    }
                 }
             }
+        }
 
-            switch (isHour.currentHour)
-            {
-                case SixAM.Hour.ZERO_AM:
-                    time_to_activate = 40f;
-                    break;
-                case SixAM.Hour.ONE_AM:
-                    time_to_activate = 30f;
-                    break;
-                case SixAM.Hour.TWO_AM:
-                    time_to_activate = 25f;
-                    break;
-                case SixAM.Hour.THREE_AM:
-                    time_to_activate = 20f;
-                    break;
-                case SixAM.Hour.FOUR_AM:
-                    time_to_activate = 15f;
-                    break;
-                case SixAM.Hour.FIVE_AM:
-                    time_to_activate = 12f;
-                    break;
-                default:
-                    break;
-            }
+        else
+        {
+            time_to_activate = 5f;
 
             if (t_deactivate == 0)
             {
@@ -117,10 +179,11 @@ public class Bonnie_Behaviour : MonoBehaviour
                 {
                     if (!isSave)
                     {
+                        // Don't kill with tutorial
                         //Debug.Log("YOU ARE DEAD");
-                        dead = true;
-                        chica_Jumpscare.SetActive(true);
-                        jumpscare.Play();
+                        //dead = true; 
+                        //chica_Jumpscare.SetActive(true); // chica?
+                        //jumpscare.Play();
                     }
                 }
 
