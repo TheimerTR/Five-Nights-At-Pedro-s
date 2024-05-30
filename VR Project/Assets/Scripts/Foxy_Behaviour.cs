@@ -30,7 +30,9 @@ public class Foxy_Behaviour : MonoBehaviour
     float passScene = 0f;
     public GameObject chica_Jumpscare;
 
+    // Tutorial
     public bool isTutorial = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -136,17 +138,19 @@ public class Foxy_Behaviour : MonoBehaviour
             if (Flashed >= 5 && HasApperared)
             {
                 HasApperared = false;
-                Timer = 0;
+                //Timer = 0;
                 Flashed = 0;
                 Growl.Play();
                 gameObject.SetActive(false);
+                player.GetComponent<TrackTutorials>().UpdateTutorials();
             }
 
             if (Timer > WaitTime && HasApperared)
             {
+                // Don't kill, but jumpscare to learn
                 //dead = true;
-                //chica_Jumpscare.SetActive(true);
-                //Jumpscare.Play();
+                chica_Jumpscare.SetActive(true);
+                Jumpscare.Play();
                 //Debug.Log("FoxyKill!");
                 //Timer = 0;
             }

@@ -31,6 +31,7 @@ public class Bonnie_Behaviour : MonoBehaviour
 
     // Tutorial
     public bool isTutorial = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -179,11 +180,11 @@ public class Bonnie_Behaviour : MonoBehaviour
                 {
                     if (!isSave)
                     {
-                        // Don't kill with tutorial
+                        // Don't kill with tutorial, but jumpscare to learn
                         //Debug.Log("YOU ARE DEAD");
                         //dead = true; 
-                        //chica_Jumpscare.SetActive(true); // chica?
-                        //jumpscare.Play();
+                        chica_Jumpscare.SetActive(true); // chica?
+                        jumpscare.Play();
                     }
                 }
 
@@ -192,8 +193,9 @@ public class Bonnie_Behaviour : MonoBehaviour
                     anim.SetBool("Open", false);
                     spotLight.enabled = false;
                     canKill = false;
-                    t_activate = 0f;
-                    t_deactivate = 0f;
+                    //t_activate = 0f;
+                    //t_deactivate = 0f;
+                    player.GetComponent<TrackTutorials>().UpdateTutorials();
                 }
             }
         }

@@ -34,7 +34,9 @@ public class Chica_Behaviour : MonoBehaviour
     bool dead = false;
     float passScene = 0f;
 
+    // Tutorial
     public bool isTutorial = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -228,6 +230,7 @@ public class Chica_Behaviour : MonoBehaviour
                 eye_R.color = Color.white;
                 eye_L.color = Color.white;
                 animator.SetBool("isAngry", false);
+                player.GetComponent<TrackTutorials>().UpdateTutorials(); // DONDE NO ANGRY
             }
         }
     }

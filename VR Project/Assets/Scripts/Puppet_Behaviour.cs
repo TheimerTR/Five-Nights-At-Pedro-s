@@ -22,7 +22,9 @@ public class Puppet_Behaviour : MonoBehaviour
     float passScene = 0f;
     public GameObject chica_Jumpscare;
 
+    // Tutorial
     public bool isTutorial = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,7 @@ public class Puppet_Behaviour : MonoBehaviour
         else
         {
             PushPuppet();
+            player.GetComponent<TrackTutorials>().UpdateTutorials();
         }
     }
 
