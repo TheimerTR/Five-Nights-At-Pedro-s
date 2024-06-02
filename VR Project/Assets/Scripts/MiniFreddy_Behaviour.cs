@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -22,9 +23,16 @@ public class MiniFreddy_Behaviour : MonoBehaviour
     {
         if (isOut) 
         {
-            if(Input.GetKeyDown(KeyCode.F)) 
+            if(Input.GetKeyDown(KeyCode.R)) 
             {
-                transform.position = freddy.positionShelve[plushieNumber];
+                List<GameObject> list = new List<GameObject>();
+                freddy.FreddyReturnPosition.GetChildGameObjects(list);
+           
+                gameObject.transform.position = list[plushieNumber].transform.position;
+                gameObject.transform.rotation = list[plushieNumber].transform.rotation;
+
+                isOut = false;
+                //gameObject.GetComponent<Rigidbody>().useGravity = false;
             }
         }
     }
@@ -39,7 +47,12 @@ public class MiniFreddy_Behaviour : MonoBehaviour
                 freddy.plushesOutOfShelve--;
                 freddy.time = 0.0f;
                 interactable.enabled = false;
-                transform.position = freddy.positionShelve[plushieNumber];
+
+                List<GameObject> list = new List<GameObject>();
+                freddy.FreddyReturnPosition.GetChildGameObjects(list);
+
+                gameObject.transform.position = list[plushieNumber].transform.position;
+                gameObject.transform.rotation = list[plushieNumber].transform.rotation;
             }
         }
     }

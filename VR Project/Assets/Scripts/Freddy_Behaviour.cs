@@ -9,6 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Freddy_Behaviour : MonoBehaviour
 {
     //public List<Vector3> FreddyListRandomPositions;
+    public GameObject FreddyReturnPosition;
     public GameObject FreddyListRandomPositions;
     public Vector3[] positionShelve; //This are their positions of oriigin for when then return to the shelve
     public GameObject[] plushies;
@@ -102,31 +103,44 @@ public class Freddy_Behaviour : MonoBehaviour
                 }
                 if (extraChangePerHour[(int)isHour.currentHour] < time)
                 {
-                    RandomPosPlushies(plushies.ElementAt(plushesOutOfShelve)); // If its time to let out another plushie call the function
-                    time = 0.0f;
-                }
-            }
-            else
-            {
-                if (firstChangePerHour[(int)isHour.currentHour] < time)
-                {
                     Debug.Log("Mini fredies go");
                     time = 0.0f;
                     int PlushToSendOut = -1;
-                    for (int i = 0;i < plushiesOut.Length;i++) 
+                    for (int i = 0; i < plushiesOut.Length; i++)
                     {
-                        if (!plushiesOut[i]) 
+                        if (!plushiesOut[i])
                         {
                             PlushToSendOut = i;
                             plushiesOut[i] = true;
                             break;
                         }
                     }
-                    if(PlushToSendOut != -1) 
+                    if (PlushToSendOut != -1)
                     {
                         RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
                     }
-                    
+                }
+            }
+            else 
+            {
+                if (firstChangePerHour[(int)isHour.currentHour] < time)
+                {
+                    Debug.Log("Mini fredies FIRST go");
+                    time = 0.0f;
+                    int PlushToSendOut = -1;
+                    for (int i = 0; i < plushiesOut.Length; i++)
+                    {
+                        if (!plushiesOut[i])
+                        {
+                            PlushToSendOut = i;
+                            plushiesOut[i] = true;
+                            break;
+                        }
+                    }
+                    if (PlushToSendOut != -1)
+                    {
+                        RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
+                    }
                 }
             }
         }

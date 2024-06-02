@@ -1388,6 +1388,37 @@ Transform:
   m_Father: {fileID: 317674535}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &123585316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123585317}
+  m_Layer: 6
+  m_Name: ChicaPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &123585317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123585316}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1362012896}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &124494041
 GameObject:
   m_ObjectHideFlags: 0
@@ -9788,6 +9819,8 @@ MonoBehaviour:
   minWaitTimeForAdd: 20
   maxWaitTimeForAdd: 80
   timeToNextAd: 0
+  isTutorial: 0
+  player: {fileID: 0}
 --- !u!82 &844106799
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11536,6 +11569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5abb3f9064baa04fb9c0d345849f63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FreddyReturnPosition: {fileID: 1362012895}
   FreddyListRandomPositions: {fileID: 64836295}
   positionShelve: []
   plushies:
@@ -11591,9 +11625,41 @@ Transform:
   - {fileID: 906528303}
   - {fileID: 1260613619}
   - {fileID: 1317492271}
+  - {fileID: 1362012896}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &945329127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945329128}
+  m_Layer: 6
+  m_Name: FreddyPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945329128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945329127}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 3.500002, y: 0.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1362012896}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950803313
 GameObject:
   m_ObjectHideFlags: 0
@@ -16002,6 +16068,37 @@ Transform:
   m_Father: {fileID: 543450651837645803}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 87.607, y: -148.663, z: -151.304}
+--- !u!1 &1358881553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358881554}
+  m_Layer: 6
+  m_Name: BonnyPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358881554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358881553}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -3.500002, y: 0.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1362012896}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1361667211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 454506, guid: 7ff7a7ba7ab5097478a43938b8f7dd82, type: 3}
@@ -16036,6 +16133,40 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 623545125}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1362012895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1362012896}
+  m_Layer: 0
+  m_Name: Return Positions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1362012896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362012895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1358881554}
+  - {fileID: 123585317}
+  - {fileID: 945329128}
+  m_Father: {fileID: 943123141}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374547815
@@ -16583,6 +16714,8 @@ MonoBehaviour:
   canKill: 0
   isSave: 0
   chica_Jumpscare: {fileID: 883472657}
+  isTutorial: 0
+  player: {fileID: 0}
 --- !u!1 &1411018237
 GameObject:
   m_ObjectHideFlags: 0
@@ -28475,6 +28608,8 @@ MonoBehaviour:
   Growl: {fileID: 9858862}
   animator: {fileID: 788948071}
   chica_Jumpscare: {fileID: 883472657}
+  isTutorial: 0
+  player: {fileID: 0}
 --- !u!4 &2068500160
 Transform:
   m_ObjectHideFlags: 0
@@ -29538,6 +29673,8 @@ MonoBehaviour:
   isHour: {fileID: 919132147710694791}
   Jumpscare: {fileID: 1782052306}
   chica_Jumpscare: {fileID: 883472657}
+  isTutorial: 0
+  player: {fileID: 0}
 --- !u!1 &2129426378
 GameObject:
   m_ObjectHideFlags: 0
