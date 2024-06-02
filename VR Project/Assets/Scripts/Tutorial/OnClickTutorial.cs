@@ -39,4 +39,12 @@ public class OnClickTutorial : MonoBehaviour
     {
         _end = true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hand")
+        {
+            Click();
+        }
+    }
 }

@@ -16,6 +16,7 @@ TagManager:
   - Puppet
   - Chica
   - Freddy
+  - Hand
   layers:
   - Default
   - TransparentFX
