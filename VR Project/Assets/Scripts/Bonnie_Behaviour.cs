@@ -178,11 +178,11 @@ public class Bonnie_Behaviour : MonoBehaviour
 
                 if (t_deactivate > 5.02f)
                 {
-                    if (!isSave)
+                    if (!isSave && !isTutorial)
                     {
                         // Don't kill with tutorial, but jumpscare to learn
-                        //Debug.Log("YOU ARE DEAD");
-                        //dead = true; 
+                        Debug.Log("YOU ARE DEAD");
+                        dead = true; 
                         chica_Jumpscare.SetActive(true); // chica?
                         jumpscare.Play();
                     }
@@ -193,9 +193,8 @@ public class Bonnie_Behaviour : MonoBehaviour
                     anim.SetBool("Open", false);
                     spotLight.enabled = false;
                     canKill = false;
-                    //t_activate = 0f;
-                    //t_deactivate = 0f;
-                    player.GetComponent<TrackTutorials>().UpdateTutorials();
+                    t_activate = 0f;
+                    t_deactivate = 0f;
                 }
             }
         }
@@ -211,6 +210,16 @@ public class Bonnie_Behaviour : MonoBehaviour
                 {
                     //Debug.Log("YOU ARE SAVE");
                     isSave = true;
+
+                    if (isTutorial)
+                    {
+                        GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                        AudioSource congrats = welldone.GetComponent<AudioSource>();
+                        congrats.Play();
+
+                        player.GetComponent<TrackTutorials>().UpdateTutorials();
+                        this.enabled = false;
+                    }
                 }
             }
         }

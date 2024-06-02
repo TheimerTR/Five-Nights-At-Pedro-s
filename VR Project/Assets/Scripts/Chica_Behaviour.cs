@@ -230,7 +230,6 @@ public class Chica_Behaviour : MonoBehaviour
                 eye_R.color = Color.white;
                 eye_L.color = Color.white;
                 animator.SetBool("isAngry", false);
-                player.GetComponent<TrackTutorials>().UpdateTutorials(); // DONDE NO ANGRY
             }
         }
     }
@@ -244,7 +243,19 @@ public class Chica_Behaviour : MonoBehaviour
                 tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
                 timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
                 time = 0;
-                angry = false;
+                angry = false; 
+                
+                if (isTutorial)
+                {
+                    GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                    AudioSource congrats = welldone.GetComponent<AudioSource>();
+                    congrats.Play();
+
+                    player.GetComponent<TrackTutorials>().UpdateTutorials(); // DONDE NO ANGRY
+                    this.enabled = false;
+                    this.gameObject.SetActive(false);
+                    tv.enabled = false;
+                }
             }
             else
             {

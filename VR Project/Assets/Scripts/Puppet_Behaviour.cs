@@ -67,7 +67,6 @@ public class Puppet_Behaviour : MonoBehaviour
         else
         {
             PushPuppet();
-            player.GetComponent<TrackTutorials>().UpdateTutorials();
         }
     }
 
@@ -96,7 +95,7 @@ public class Puppet_Behaviour : MonoBehaviour
                 }
             }
 
-            if (other.tag == "PuppetKill")
+            if (other.tag == "PuppetKill" && !isTutorial)
             {
                 puppetKill = true;
             }
@@ -139,6 +138,16 @@ public class Puppet_Behaviour : MonoBehaviour
             if (other.tag != "StopPuppet" && other.tag != "Interactuables" && other.tag != "Foxy_FlashLight")
             {
                 isBeeingPushed = false;
+
+                if (isTutorial)
+                {
+                    GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                    AudioSource congrats = welldone.GetComponent<AudioSource>();
+                    congrats.Play();
+
+                    player.GetComponent<TrackTutorials>().UpdateTutorials();
+                    this.enabled = false;
+                }
             }
         }
     }

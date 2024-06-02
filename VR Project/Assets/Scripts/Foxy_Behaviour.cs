@@ -138,11 +138,20 @@ public class Foxy_Behaviour : MonoBehaviour
             if (Flashed >= 5 && HasApperared)
             {
                 HasApperared = false;
-                //Timer = 0;
+                Timer = 0;
                 Flashed = 0;
                 Growl.Play();
                 gameObject.SetActive(false);
-                player.GetComponent<TrackTutorials>().UpdateTutorials();
+
+                if (isTutorial)
+                {
+                    GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                    AudioSource congrats = welldone.GetComponent<AudioSource>();
+                    congrats.Play();
+
+                    player.GetComponent<TrackTutorials>().UpdateTutorials();
+                    this.enabled = false;
+                }
             }
 
             if (Timer > WaitTime && HasApperared)
