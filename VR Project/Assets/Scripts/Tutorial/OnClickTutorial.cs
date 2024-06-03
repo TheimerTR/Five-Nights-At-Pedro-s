@@ -24,7 +24,7 @@ public class OnClickTutorial : MonoBehaviour
 
             if (passScene > 1.5f)
             {
-                SceneManager.LoadScene("Dead"); // Go to main menu
+                SceneManager.LoadScene("Level Selector"); // Go to main menu
             }
         }
     }
@@ -42,9 +42,9 @@ public class OnClickTutorial : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Hand")
-        {
-            Click();
-        }
+        //if (other.tag == "Hand")
+        //{
+        //    Click();
+        //}
     }
 }

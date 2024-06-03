@@ -6,7 +6,7 @@ using UnityEngine;
 public class TrackTutorials : MonoBehaviour
 {
     public int completedTutorials = 0;
-    public int numberTutorials = 4;
+    public int numberTutorials = 5;
     public GameObject canvasEnd;
 
     // Start is called before the first frame update

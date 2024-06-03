@@ -10,17 +10,18 @@ public class StartTutorial : MonoBehaviour
     public GameObject foxyCanvas;
     public GameObject puppetCanvas;
     public GameObject chicaCanvas;
+    public GameObject freddyCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,12 +33,15 @@ public class StartTutorial : MonoBehaviour
                 break;
             case "Foxy":
                 foxyCanvas.SetActive(true);
-                break;            
+                break;
             case "Puppet":
                 puppetCanvas.SetActive(true);
-                break;            
+                break;
             case "Chica":
                 chicaCanvas.SetActive(true);
+                break;
+            case "Freddy":
+                freddyCanvas.SetActive(true);
                 break;
             default:
                 break;
@@ -52,12 +56,15 @@ public class StartTutorial : MonoBehaviour
                 break;
             case "Foxy":
                 foxyCanvas.SetActive(false);
-                break;            
+                break;
             case "Puppet":
                 puppetCanvas.SetActive(false);
-                break;            
+                break;
             case "Chica":
                 chicaCanvas.SetActive(false);
+                break;
+            case "Freddy":
+                freddyCanvas.SetActive(true);
                 break;
             default:
                 break;
