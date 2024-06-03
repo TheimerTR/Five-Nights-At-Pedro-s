@@ -33,6 +33,7 @@ public class Freddy_Behaviour : MonoBehaviour
     // Tutorial
     public bool isTutorial = false;
     public GameObject player;
+    public GameObject nextTutorial;
     private bool _start = true;
 
     // Start is called before the first frame update
@@ -211,6 +212,10 @@ public class Freddy_Behaviour : MonoBehaviour
                 if (plushesOutOfShelve == 0)
                 {
                     player.GetComponent<TrackTutorials>().UpdateTutorials();
+                    nextTutorial.SetActive(true);
+                    GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                    AudioSource congrats = welldone.GetComponent<AudioSource>();
+                    congrats.Play();
                 }
             }
         }

@@ -144,7 +144,7 @@ public class Bonnie_Behaviour : MonoBehaviour
 
         else
         {
-            time_to_activate = 5f;
+            time_to_activate = 2.5f;
 
             if (t_deactivate == 0)
             {
@@ -168,7 +168,7 @@ public class Bonnie_Behaviour : MonoBehaviour
                 t_deactivate += Time.deltaTime;
             }
 
-            if (t_deactivate > 8f)
+            if (t_deactivate > 5f)
             {
                 spotLight.enabled = true;
 

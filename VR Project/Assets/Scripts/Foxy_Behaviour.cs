@@ -33,6 +33,7 @@ public class Foxy_Behaviour : MonoBehaviour
     // Tutorial
     public bool isTutorial = false;
     public GameObject player;
+    public GameObject nextTutorial;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +151,7 @@ public class Foxy_Behaviour : MonoBehaviour
                     congrats.Play();
 
                     player.GetComponent<TrackTutorials>().UpdateTutorials();
+                    nextTutorial.SetActive(true);
                     this.enabled = false;
                 }
             }

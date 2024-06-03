@@ -37,6 +37,7 @@ public class Chica_Behaviour : MonoBehaviour
     // Tutorial
     public bool isTutorial = false;
     public GameObject player;
+    public GameObject nextTutorial;
 
     // Start is called before the first frame update
     void Start()
@@ -251,7 +252,9 @@ public class Chica_Behaviour : MonoBehaviour
                     AudioSource congrats = welldone.GetComponent<AudioSource>();
                     congrats.Play();
 
-                    player.GetComponent<TrackTutorials>().UpdateTutorials(); // DONDE NO ANGRY
+                    player.GetComponent<TrackTutorials>().UpdateTutorials();
+                    nextTutorial.SetActive(true);
+
                     this.enabled = false;
                     this.gameObject.SetActive(false);
                     tv.enabled = false;

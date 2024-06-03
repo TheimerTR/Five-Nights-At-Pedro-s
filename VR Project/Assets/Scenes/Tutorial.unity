@@ -2302,7 +2302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &75330211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2403,6 +2403,7 @@ MonoBehaviour:
   MoveSound: {fileID: 1846913567}
   isTutorial: 1
   player: {fileID: 1181769142}
+  nextTutorial: {fileID: 1674759759}
 --- !u!4 &75800926
 Transform:
   m_ObjectHideFlags: 0
@@ -17261,6 +17262,7 @@ MonoBehaviour:
   timeToNextAd: 0
   isTutorial: 1
   player: {fileID: 1181769142}
+  nextTutorial: {fileID: 1875657182}
 --- !u!95 &565689346
 Animator:
   serializedVersion: 5
@@ -22490,6 +22492,7 @@ MonoBehaviour:
   chica_Jumpscare: {fileID: 131476714}
   isTutorial: 1
   player: {fileID: 1181769142}
+  nextTutorial: {fileID: 1513563201}
 --- !u!1 &754373254
 GameObject:
   m_ObjectHideFlags: 0
@@ -45576,6 +45579,7 @@ MonoBehaviour:
   chica_Jumpscare: {fileID: 131476714}
   isTutorial: 1
   player: {fileID: 1181769142}
+  nextTutorial: {fileID: 75330210}
 --- !u!65 &1407883033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48347,7 +48351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1513563202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52294,7 +52298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1674759760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58768,7 +58772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1875657183
 BoxCollider:
   m_ObjectHideFlags: 0
