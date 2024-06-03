@@ -21,6 +21,7 @@ public class PassToGame : MonoBehaviour
 
     public void PassToScene()
     {
+        Debug.Log("Load scene: " + scene);
         SceneManager.LoadScene(scene);
     }
 }
