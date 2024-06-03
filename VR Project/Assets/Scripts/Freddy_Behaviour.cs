@@ -28,18 +28,23 @@ public class Freddy_Behaviour : MonoBehaviour
     public Flashlight flashlightReferece;
     public List<GameObject> ligthsToTurnOff;
     float timeSwitchLigths;
-    // Start is called before the first frame update
-
     public AudioSource MoveSound;
+
+    // Tutorial
+    public bool isTutorial = false;
+    public GameObject player;
+    private bool _start = true;
+
+    // Start is called before the first frame update
     void Start()
     {
         positionShelve = new Vector3[3];
         plushiesOut = new bool[3];
-        for (int i = 0; i < plushiesOut.Length; i++) 
+        for (int i = 0; i < plushiesOut.Length; i++)
         {
             plushiesOut[i] = false;
         }
-        positionShelve[0] = new Vector3(-3.5f, 0.2f,0f);
+        positionShelve[0] = new Vector3(-3.5f, 0.2f, 0f);
         positionShelve[1] = new Vector3(0f, 0.2f, 0f);
         positionShelve[2] = new Vector3(3.5f, 0.2f, 0f);
 
@@ -47,37 +52,138 @@ public class Freddy_Behaviour : MonoBehaviour
 
         plushesOutOfShelve = 0;
 
-        time = 0.0f;   
+        time = 0.0f;
+        _start = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isHour.currentHour != SixAM.Hour.SIX_AM)
+        if (!isTutorial)
         {
-            time += Time.deltaTime;
+            if (isHour.currentHour != SixAM.Hour.SIX_AM)
+            {
+                time += Time.deltaTime;
+
+                if (plushesOutOfShelve > 2) //If all plushies are out of the shelve
+                {
+                    flashlightReferece.deactivated = true;
+                    if (time > 15.0f)
+                    {
+                        Debug.Log("Plushies Killed You");
+                    }
+                    //Kill player.
+                }
+                else if (0 < plushesOutOfShelve)
+                {
+                    flashlightReferece.deactivated = false;
+                    //Debuff based on num plushies out
+                    if (2 == plushesOutOfShelve)
+                    {
+                        for (int i = 0; i < ligthsToTurnOff.Count; i++)
+                        {
+                            ligthsToTurnOff[i].SetActive(false);
+                        }
+                    }
+                    else if (1 == plushesOutOfShelve)
+                    {
+                        timeSwitchLigths += Time.deltaTime;
+
+                        if (timeSwitchLigths > 0.75f)
+                        {
+                            for (int i = 0; i < ligthsToTurnOff.Count; i++)
+                            {
+                                if (Random.Range(0, 2) == 0)
+                                {
+                                    ligthsToTurnOff[i].SetActive(false);
+                                    timeSwitchLigths = 0;
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < ligthsToTurnOff.Count; i++)
+                        {
+                            if (!ligthsToTurnOff[i].active && timeSwitchLigths >= 0.3f)
+                            {
+                                ligthsToTurnOff[i].SetActive(true);
+                            }
+                        }
+                    }
+                    if (extraChangePerHour[(int)isHour.currentHour] < time)
+                    {
+                        Debug.Log("Mini fredies go");
+                        time = 0.0f;
+                        int PlushToSendOut = -1;
+                        for (int i = 0; i < plushiesOut.Length; i++)
+                        {
+                            if (!plushiesOut[i])
+                            {
+                                PlushToSendOut = i;
+                                plushiesOut[i] = true;
+                                break;
+                            }
+                        }
+                        if (PlushToSendOut != -1)
+                        {
+                            RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
+                        }
+                    }
+                }
+                else
+                {
+                    if (firstChangePerHour[(int)isHour.currentHour] < time)
+                    {
+                        Debug.Log("Mini fredies FIRST go");
+                        time = 0.0f;
+                        int PlushToSendOut = -1;
+                        for (int i = 0; i < plushiesOut.Length; i++)
+                        {
+                            if (!plushiesOut[i])
+                            {
+                                PlushToSendOut = i;
+                                plushiesOut[i] = true;
+                                break;
+                            }
+                        }
+                        if (PlushToSendOut != -1)
+                        {
+                            RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
+                        }
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            if (_start)
+            {
+                _start = false;
+
+                for (int i = 0; i < plushies.Length; i++)
+                {
+                    PosPlushie(plushies[i], i);
+                }
+            }
 
             if (plushesOutOfShelve > 2) //If all plushies are out of the shelve
             {
                 flashlightReferece.deactivated = true;
-                if (time > 15.0f)
-                {
-                    Debug.Log("Plushies Killed You");
-                }
-                //Kill player.
             }
+
             else if (0 < plushesOutOfShelve)
             {
                 flashlightReferece.deactivated = false;
+
                 //Debuff based on num plushies out
-                if (2 == plushesOutOfShelve)
+                if (plushesOutOfShelve == 2)
                 {
                     for (int i = 0; i < ligthsToTurnOff.Count; i++)
                     {
                         ligthsToTurnOff[i].SetActive(false);
                     }
                 }
-                else if (1 == plushesOutOfShelve)
+                else if (plushesOutOfShelve == 1)
                 {
                     timeSwitchLigths += Time.deltaTime;
 
@@ -101,50 +207,13 @@ public class Freddy_Behaviour : MonoBehaviour
                         }
                     }
                 }
-                if (extraChangePerHour[(int)isHour.currentHour] < time)
+
+                if (plushesOutOfShelve == 0)
                 {
-                    Debug.Log("Mini fredies go");
-                    time = 0.0f;
-                    int PlushToSendOut = -1;
-                    for (int i = 0; i < plushiesOut.Length; i++)
-                    {
-                        if (!plushiesOut[i])
-                        {
-                            PlushToSendOut = i;
-                            plushiesOut[i] = true;
-                            break;
-                        }
-                    }
-                    if (PlushToSendOut != -1)
-                    {
-                        RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
-                    }
-                }
-            }
-            else 
-            {
-                if (firstChangePerHour[(int)isHour.currentHour] < time)
-                {
-                    Debug.Log("Mini fredies FIRST go");
-                    time = 0.0f;
-                    int PlushToSendOut = -1;
-                    for (int i = 0; i < plushiesOut.Length; i++)
-                    {
-                        if (!plushiesOut[i])
-                        {
-                            PlushToSendOut = i;
-                            plushiesOut[i] = true;
-                            break;
-                        }
-                    }
-                    if (PlushToSendOut != -1)
-                    {
-                        RandomPosPlushies(plushies.ElementAt(PlushToSendOut)); // If its time to let out the first plushie call the function
-                    }
+                    player.GetComponent<TrackTutorials>().UpdateTutorials();
                 }
             }
         }
-
     }
 
     private void RandomPosPlushies(GameObject go)
@@ -155,28 +224,45 @@ public class Freddy_Behaviour : MonoBehaviour
         FreddyListRandomPositions.GetChildGameObjects(list);
 
         plushesOutOfShelve++;
-        int pos = Random.Range(0,list.Count);
+        int pos = Random.Range(0, list.Count);
         bool checkAgain = true;
-        if(positionsPlushies.Count == 0) { checkAgain = false; }
+        if (positionsPlushies.Count == 0) { checkAgain = false; }
 
         int check = 0;
-        while(checkAgain && check<10)  //Check de que no se repitan
-        { 
+        while (checkAgain && check < 10)  //Check de que no se repitan
+        {
             check++;
-            for(int i = 0; i < positionsPlushies.Count; i++) 
+            for (int i = 0; i < positionsPlushies.Count; i++)
             {
                 if (positionsPlushies[i] != pos)
                 {
                     checkAgain = false;
                     //break;
                 }
-                else 
+                else
                 {
                     checkAgain = true;
                     pos = Random.Range(0, list.Count);
                 }
             }
         }
+
+        go.transform.position = list[pos].transform.position;
+        go.transform.rotation = list[pos].transform.rotation;
+        XRGrabInteractable xr = go.GetComponent<XRGrabInteractable>();
+        MiniFreddy_Behaviour plush = go.GetComponent<MiniFreddy_Behaviour>();
+        xr.enabled = true;
+        plush.isOut = true;
+        positionsPlushies.Add(pos);
+    }
+
+    private void PosPlushie(GameObject go, int pos)
+    {
+        MoveSound.Play();
+
+        List<GameObject> list = new List<GameObject>();
+        FreddyListRandomPositions.GetChildGameObjects(list);
+        plushesOutOfShelve++;
 
         go.transform.position = list[pos].transform.position;
         go.transform.rotation = list[pos].transform.rotation;
