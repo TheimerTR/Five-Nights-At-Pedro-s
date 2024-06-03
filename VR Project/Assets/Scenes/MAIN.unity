@@ -8052,7 +8052,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.09692062, g: 0.12620415, b: 0.20754719, a: 1}
-  m_Intensity: 2.84
+  m_Intensity: 4.09
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -15030,6 +15030,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1253369210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 1253369208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1260613618
 GameObject:
   m_ObjectHideFlags: 0
@@ -16716,7 +16721,7 @@ MonoBehaviour:
   isSave: 0
   chica_Jumpscare: {fileID: 883472657}
   isTutorial: 0
-  player: {fileID: 0}
+  player: {fileID: 1253369210}
 --- !u!1 &1411018237
 GameObject:
   m_ObjectHideFlags: 0

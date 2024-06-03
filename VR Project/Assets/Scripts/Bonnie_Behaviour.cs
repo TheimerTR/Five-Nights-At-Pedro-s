@@ -168,7 +168,7 @@ public class Bonnie_Behaviour : MonoBehaviour
                 t_deactivate += Time.deltaTime;
             }
 
-            if (t_deactivate > 5f)
+            if (t_deactivate > 8f)
             {
                 spotLight.enabled = true;
 
@@ -176,7 +176,7 @@ public class Bonnie_Behaviour : MonoBehaviour
 
                 canKill = true;
 
-                if (t_deactivate > 5.02f)
+                if (t_deactivate > 8.02f)
                 {
                     if (!isSave && !isTutorial)
                     {
@@ -188,7 +188,7 @@ public class Bonnie_Behaviour : MonoBehaviour
                     }
                 }
 
-                if (t_deactivate > 6.2f)
+                if (t_deactivate > 9.2f)
                 {
                     anim.SetBool("Open", false);
                     spotLight.enabled = false;
@@ -208,7 +208,7 @@ public class Bonnie_Behaviour : MonoBehaviour
             {
                 if (other.tag == "Player")
                 {
-                    //Debug.Log("YOU ARE SAVE");
+                    Debug.Log("YOU ARE SAVE");
                     isSave = true;
 
                     if (isTutorial)
