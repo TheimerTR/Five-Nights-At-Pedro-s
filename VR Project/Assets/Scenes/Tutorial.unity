@@ -5954,7 +5954,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207063652}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb66e1f35fd05643b8725af23603a2a, type: 3}
   m_Name: 
@@ -5977,7 +5977,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207063652}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6de7be1218b9b874eb1e4f58890b837d, type: 3}
@@ -6074,7 +6074,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207063652}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: aea89adbe9155df49aae1d887358b1df, type: 2}
   m_CullingMode: 0
@@ -38817,7 +38817,7 @@ MonoBehaviour:
   foxyCanvas: {fileID: 1678044944}
   puppetCanvas: {fileID: 428461522}
   chicaCanvas: {fileID: 2130073631}
-  freddyCanvas: {fileID: 0}
+  freddyCanvas: {fileID: 176774695}
 --- !u!1 &1182310708
 GameObject:
   m_ObjectHideFlags: 0
@@ -45569,7 +45569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0632f83fa9a9349899ca3c8b35c8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   DownSpeed: 20
   isBeeingPushed: 0
   stopPushing: 0

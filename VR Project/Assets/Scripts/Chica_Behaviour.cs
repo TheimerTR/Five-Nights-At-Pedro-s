@@ -34,6 +34,8 @@ public class Chica_Behaviour : MonoBehaviour
     bool dead = false;
     float passScene = 0f;
 
+    int CountToKillNotAdd = 0;
+
     // Tutorial
     public bool isTutorial = false;
     public GameObject player;
@@ -262,7 +264,15 @@ public class Chica_Behaviour : MonoBehaviour
             }
             else
             {
-                Kill(); //If you change Chica the TV while she is enjoying she kills you to
+                CountToKillNotAdd++;
+                Growl.Play();
+
+                if (CountToKillNotAdd >= 3 && !isTutorial)
+                {
+                    Kill();
+                }
+
+                //Kill(); //If you change Chica the TV while she is enjoying she kills you to
             }
         }
     }

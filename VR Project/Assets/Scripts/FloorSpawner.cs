@@ -26,7 +26,7 @@ public class FloorSpawner : MonoBehaviour
     {
         if(other.gameObject == Flashlight)
         {
-            Debug.Log("Enter");
+            //Debug.Log("Enter");
             Flashlight.transform.position = flashT.position;
             Flashlight.transform.rotation = flashT.rotation;
         }

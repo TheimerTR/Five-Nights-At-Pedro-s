@@ -112,7 +112,6 @@ public class Freddy_Behaviour : MonoBehaviour
                     }
                     if (extraChangePerHour[(int)isHour.currentHour] < time)
                     {
-                        Debug.Log("Mini fredies go");
                         time = 0.0f;
                         int PlushToSendOut = -1;
                         for (int i = 0; i < plushiesOut.Length; i++)
@@ -134,7 +133,6 @@ public class Freddy_Behaviour : MonoBehaviour
                 {
                     if (firstChangePerHour[(int)isHour.currentHour] < time)
                     {
-                        Debug.Log("Mini fredies FIRST go");
                         time = 0.0f;
                         int PlushToSendOut = -1;
                         for (int i = 0; i < plushiesOut.Length; i++)
@@ -165,6 +163,8 @@ public class Freddy_Behaviour : MonoBehaviour
                 {
                     PosPlushie(plushies[i], i);
                 }
+
+                plushesOutOfShelve = 3;
             }
 
             if (plushesOutOfShelve > 2) //If all plushies are out of the shelve
@@ -208,15 +208,17 @@ public class Freddy_Behaviour : MonoBehaviour
                         }
                     }
                 }
+            }
 
-                if (plushesOutOfShelve == 0)
-                {
-                    player.GetComponent<TrackTutorials>().UpdateTutorials();
-                    nextTutorial.SetActive(true);
-                    GameObject welldone = GameObject.Find("CongratsSoundEffect");
-                    AudioSource congrats = welldone.GetComponent<AudioSource>();
-                    congrats.Play();
-                }
+            if (plushesOutOfShelve <= 0)
+            {
+                player.GetComponent<TrackTutorials>().UpdateTutorials();
+                nextTutorial.SetActive(true);
+                GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                AudioSource congrats = welldone.GetComponent<AudioSource>();
+                congrats.Play();
+                this.enabled = false;
+                this.gameObject.SetActive(false);
             }
         }
     }
