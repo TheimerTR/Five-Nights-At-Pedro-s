@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ReturnFromDie : MonoBehaviour
 {
     float timerToReturn = 0;
+    public float timeToSceneReturn = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class ReturnFromDie : MonoBehaviour
     {
         timerToReturn += Time.deltaTime;
 
-        if(timerToReturn > 10)
+        if(timerToReturn > timeToSceneReturn)
         {
             SceneManager.LoadScene("Tutorial");
             timerToReturn = 0;
