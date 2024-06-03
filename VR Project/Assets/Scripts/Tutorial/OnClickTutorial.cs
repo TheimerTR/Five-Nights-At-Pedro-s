@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class OnClickTutorial : MonoBehaviour
 {
     public GameObject animatronic;
     private bool _end = false;
     private float passScene = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
