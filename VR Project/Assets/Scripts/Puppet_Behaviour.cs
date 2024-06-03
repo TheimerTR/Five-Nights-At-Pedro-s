@@ -149,6 +149,7 @@ public class Puppet_Behaviour : MonoBehaviour
                     player.GetComponent<TrackTutorials>().UpdateTutorials();
                     nextTutorial.SetActive(true);
                     this.enabled = false;
+                    this.gameObject.SetActive(false);
                 }
             }
         }

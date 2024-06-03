@@ -64,7 +64,7 @@ public class StartTutorial : MonoBehaviour
                 chicaCanvas.SetActive(false);
                 break;
             case "Freddy":
-                freddyCanvas.SetActive(true);
+                freddyCanvas.SetActive(false);
                 break;
             default:
                 break;

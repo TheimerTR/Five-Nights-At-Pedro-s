@@ -181,10 +181,12 @@ public class Bonnie_Behaviour : MonoBehaviour
                     if (!isSave && !isTutorial)
                     {
                         // Don't kill with tutorial, but jumpscare to learn
-                        Debug.Log("YOU ARE DEAD");
+                        Debug.Log("YOU ARE DEAD Bonnie");
                         dead = true; 
                         chica_Jumpscare.SetActive(true); // chica?
                         jumpscare.Play();
+                        t_deactivate = 0;
+                        t_activate = 0f;
                     }
                 }
 
@@ -219,6 +221,7 @@ public class Bonnie_Behaviour : MonoBehaviour
 
                         player.GetComponent<TrackTutorials>().UpdateTutorials();
                         this.enabled = false;
+                        this.gameObject.SetActive(false);
                     }
                 }
             }
