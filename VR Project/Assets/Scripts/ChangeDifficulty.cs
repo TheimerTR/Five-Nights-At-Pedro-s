@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+using TMPro;
+
 public enum DIFFICULTY : int
 {
     TUTORIAL,
-    PUTO_CASUAL,
+    EASY,
     NORMAL,
     HARD
 }
@@ -13,11 +16,13 @@ public enum DIFFICULTY : int
 public class ChangeDifficulty : MonoBehaviour
 {
     public DIFFICULTY difficulty = DIFFICULTY.NORMAL;
+    public TextMeshProUGUI text;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        difficulty = DIFFICULTY.NORMAL;
+        text.text = difficulty.ToString();
     }
 
     // Update is called once per frame
@@ -28,14 +33,33 @@ public class ChangeDifficulty : MonoBehaviour
 
     public void LessDifficulty()
     {
-        difficulty--;
+        if (difficulty > DIFFICULTY.EASY)
+        {
+            difficulty--;
+        }
+        else
+        {
+            difficulty = DIFFICULTY.HARD;
+        }
+
+
+        text.text = difficulty.ToString();
 
         Debug.Log("Difficulty--: " + difficulty.ToString());
     }
 
     public void MoreDifficulty()
     {
-        difficulty++;
+        if (difficulty < DIFFICULTY.HARD)
+        {
+            difficulty++;
+        }
+        else
+        {
+            difficulty = DIFFICULTY.TUTORIAL;
+        }
+
+        text.text = difficulty.ToString();
 
         Debug.Log("Difficulty++: " + difficulty.ToString());
     }

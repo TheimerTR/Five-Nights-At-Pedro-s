@@ -2242,6 +2242,8 @@ MonoBehaviour:
   - {fileID: 593501045}
   - {fileID: 293536968}
   MoveSound: {fileID: 1846913567}
+  isTutorial: 0
+  player: {fileID: 0}
 --- !u!4 &75800926
 Transform:
   m_ObjectHideFlags: 0
@@ -5954,7 +5956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &223006731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35892,6 +35894,7 @@ MonoBehaviour:
   foxyCanvas: {fileID: 1678044944}
   puppetCanvas: {fileID: 428461522}
   chicaCanvas: {fileID: 2130073631}
+  freddyCanvas: {fileID: 0}
 --- !u!1 &1182310708
 GameObject:
   m_ObjectHideFlags: 0
@@ -45326,6 +45329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 2
+  text: {fileID: 1802444366}
 --- !u!1 &1545346703
 GameObject:
   m_ObjectHideFlags: 0
@@ -52941,7 +52945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: NORMAL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
