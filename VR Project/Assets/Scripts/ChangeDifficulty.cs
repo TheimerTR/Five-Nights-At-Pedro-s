@@ -17,11 +17,12 @@ public class ChangeDifficulty : MonoBehaviour
 {
     public DIFFICULTY difficulty = DIFFICULTY.NORMAL;
     public TextMeshProUGUI text;
+    [SerializeField] private PassToGame CS_passToGame;
 
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = DIFFICULTY.NORMAL;
+        difficulty = DIFFICULTY.TUTORIAL;
         text.text = difficulty.ToString();
     }
 
@@ -42,8 +43,8 @@ public class ChangeDifficulty : MonoBehaviour
             difficulty = DIFFICULTY.HARD;
         }
 
-
         text.text = difficulty.ToString();
+        CS_passToGame.scene = difficulty.ToString();
 
         Debug.Log("Difficulty--: " + difficulty.ToString());
     }
@@ -60,6 +61,7 @@ public class ChangeDifficulty : MonoBehaviour
         }
 
         text.text = difficulty.ToString();
+        CS_passToGame.scene = difficulty.ToString();
 
         Debug.Log("Difficulty++: " + difficulty.ToString());
     }
