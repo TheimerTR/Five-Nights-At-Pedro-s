@@ -35,7 +35,7 @@ public class ChangeDifficulty : MonoBehaviour
 
     public void LessDifficulty()
     {
-        if (difficulty > DIFFICULTY.EASY)
+        if (difficulty >= DIFFICULTY.EASY)
         {
             difficulty--;
         }
