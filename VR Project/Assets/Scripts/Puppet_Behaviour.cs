@@ -66,7 +66,6 @@ public class Puppet_Behaviour : MonoBehaviour
                 }
             }
         }
-
         else
         {
             PushPuppet();
@@ -80,9 +79,6 @@ public class Puppet_Behaviour : MonoBehaviour
 
         if (isBeeingPushed && !stopPushing && !puppetKill)
             gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
-
-        musicPuppet.Stop();
-        musicPuppet.Play();
     }
 
     void OnTriggerEnter(Collider other)
@@ -123,6 +119,8 @@ public class Puppet_Behaviour : MonoBehaviour
                 {
                     stopPushing = true;
                     isBeeingPushed = false;
+
+                    musicPuppet.Stop();
                 }
             }
             else
@@ -143,6 +141,7 @@ public class Puppet_Behaviour : MonoBehaviour
         {
             if (other.tag != "StopPuppet" && other.tag != "Interactuables" && other.tag != "Foxy_FlashLight")
             {
+                musicPuppet.Play(); 
                 isBeeingPushed = false;
 
                 if (isTutorial)
