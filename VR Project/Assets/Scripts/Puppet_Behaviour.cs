@@ -7,7 +7,7 @@ using static UnityEngine.XR.OpenXR.Features.Interactions.DPadInteraction;
 
 public class Puppet_Behaviour : MonoBehaviour
 {
-    public float speed;
+    public float speedUpwards;
     public float DownSpeed;
 
     public bool isBeeingPushed;
@@ -74,7 +74,7 @@ public class Puppet_Behaviour : MonoBehaviour
     private void PushPuppet() // Puppet push logic
     {
         if (!isBeeingPushed && !stopPushing && !puppetKill)
-            gameObject.transform.localPosition += new Vector3(0, speed * 0.00001f, 0);
+            gameObject.transform.localPosition += new Vector3(0, speedUpwards * 0.00001f, 0);
 
         if (isBeeingPushed && !stopPushing && !puppetKill)
             gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);

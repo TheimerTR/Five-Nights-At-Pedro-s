@@ -12,8 +12,11 @@ public class Chica_Behaviour : MonoBehaviour
     [SerializeField] bool angry;
     float time;
 
-    public float timeForClipChange;
-    public float timeForKill;
+    //public float timeForClipChange;
+    public List<float> timeForKill;    
+    public List<float> minWaitTimeForAdd;
+    public List<float> maxWaitTimeForAdd;
+    public float timeToNextAd = 0f;
     public VideoPlayer tv;
 
     public GameObject chica_Jumpscare;
@@ -26,10 +29,6 @@ public class Chica_Behaviour : MonoBehaviour
 
     public Light eye_R;
     public Light eye_L;
-
-    public float minWaitTimeForAdd = 20f;
-    public float maxWaitTimeForAdd = 80f;
-    public float timeToNextAd = 0f;
 
     bool dead = false;
     float passScene = 0f;
@@ -46,7 +45,7 @@ public class Chica_Behaviour : MonoBehaviour
     {
         angry = false;
         time = 0.0f;
-        timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
+        timeToNextAd = Random.Range(minWaitTimeForAdd[(int)isHour.currentHour], maxWaitTimeForAdd[(int)isHour.currentHour]);
 
         animator = GetComponent<Animator>();
 
@@ -70,47 +69,12 @@ public class Chica_Behaviour : MonoBehaviour
                     }
                 }
 
-                if (isHour.currentHour == SixAM.Hour.ZERO_AM)
-                {
-                    minWaitTimeForAdd = 20f;
-                    maxWaitTimeForAdd = 40f;
-                }
-
-                if (isHour.currentHour == SixAM.Hour.ONE_AM)
-                {
-                    minWaitTimeForAdd = 15f;
-                    maxWaitTimeForAdd = 40f;
-                }
-
-                if (isHour.currentHour == SixAM.Hour.TWO_AM)
-                {
-                    minWaitTimeForAdd = 15f;
-                    maxWaitTimeForAdd = 30f;
-                }
-
-                if (isHour.currentHour == SixAM.Hour.THREE_AM)
-                {
-                    minWaitTimeForAdd = 10f;
-                    maxWaitTimeForAdd = 30f;
-                }
-
-                if (isHour.currentHour == SixAM.Hour.FOUR_AM)
-                {
-                    minWaitTimeForAdd = 10f;
-                    maxWaitTimeForAdd = 20f;
-                }
-
-                if (isHour.currentHour == SixAM.Hour.FIVE_AM)
-                {
-                    minWaitTimeForAdd = 8f;
-                    maxWaitTimeForAdd = 25f;
-                }
-
+                //Debugging
                 if (Input.GetKeyDown(KeyCode.V))
                 {
                     angry = !angry;
                     time = 0;
-                    timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
+                    timeToNextAd = Random.Range(minWaitTimeForAdd[(int)isHour.currentHour], maxWaitTimeForAdd[(int)isHour.currentHour]);
 
                     if (!angry)
                     {
@@ -156,7 +120,7 @@ public class Chica_Behaviour : MonoBehaviour
                     eye_R.color = Color.red;
                     eye_L.color = Color.red;
 
-                    if (time > timeForKill)
+                    if (time > timeForKill[(int)isHour.currentHour])
                     {
                         Kill();
                         time = 0;
@@ -173,15 +137,12 @@ public class Chica_Behaviour : MonoBehaviour
         }
 
         else
-        {
-            minWaitTimeForAdd = 8f;
-            maxWaitTimeForAdd = 25f;
-            
+        {            
             if (Input.GetKeyDown(KeyCode.V))
             {
                 angry = !angry;
                 time = 0;
-                timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
+                timeToNextAd = Random.Range(minWaitTimeForAdd[(int)isHour.currentHour], maxWaitTimeForAdd[(int)isHour.currentHour]);
 
                 if (!angry)
                 {
@@ -244,7 +205,7 @@ public class Chica_Behaviour : MonoBehaviour
             if (angry)
             {
                 tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
-                timeToNextAd = Random.Range(minWaitTimeForAdd, maxWaitTimeForAdd);
+                timeToNextAd = Random.Range(minWaitTimeForAdd[(int)isHour.currentHour], maxWaitTimeForAdd[(int)isHour.currentHour]);
                 time = 0;
                 angry = false; 
                 

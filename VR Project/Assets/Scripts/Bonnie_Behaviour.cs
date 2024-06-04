@@ -20,7 +20,8 @@ public class Bonnie_Behaviour : MonoBehaviour
     public float t_activate;
     public float t_deactivate;
 
-    public float time_to_activate = 0;
+    public float time_to_activate = 0; //Variable para el tutorial
+    public List<float> timeToAppear; //Tiempo que tarda en empezar a picar a la puerta
 
     public bool canKill;
     public bool isSave;
@@ -55,6 +56,7 @@ public class Bonnie_Behaviour : MonoBehaviour
         {
             if (isHour.currentHour != SixAM.Hour.SIX_AM) // normal behaviour
             {
+                //If Bonny killed you, transition to dead scene
                 if (dead)
                 {
                     passScene += Time.deltaTime;
@@ -65,36 +67,13 @@ public class Bonnie_Behaviour : MonoBehaviour
                     }
                 }
 
-                switch (isHour.currentHour)
-                {
-                    case SixAM.Hour.ZERO_AM:
-                        time_to_activate = 40f;
-                        break;
-                    case SixAM.Hour.ONE_AM:
-                        time_to_activate = 30f;
-                        break;
-                    case SixAM.Hour.TWO_AM:
-                        time_to_activate = 25f;
-                        break;
-                    case SixAM.Hour.THREE_AM:
-                        time_to_activate = 20f;
-                        break;
-                    case SixAM.Hour.FOUR_AM:
-                        time_to_activate = 15f;
-                        break;
-                    case SixAM.Hour.FIVE_AM:
-                        time_to_activate = 12f;
-                        break;
-                    default:
-                        break;
-                }
-
                 if (t_deactivate == 0)
                 {
                     t_activate += Time.deltaTime;
                 }
 
-                if (t_activate > time_to_activate)
+                //Start timer to hide behind the door
+                if (t_activate > timeToAppear[(int)isHour.currentHour])
                 {
                     if (t_deactivate == 0f)
                     {
@@ -108,18 +87,34 @@ public class Bonnie_Behaviour : MonoBehaviour
                         growl.Play();
                     }
 
+                    if (t_deactivate >= 2f && t_deactivate <= 2.2f)
+                    {
+                        knok_knok.volume += 0.5f;
+                        knok_knok.Play();
+                        //knok_knok.volume -= 0.5f;
+                    }
+
+                    if (t_deactivate >= 5f && t_deactivate <= 5.2f)
+                    {
+                        knok_knok.volume += 0.8f;
+                        knok_knok.Play();
+                        //knok_knok.volume -= 0.8f;
+                    }
+
                     t_deactivate += Time.deltaTime;
                 }
 
-                if (t_deactivate > 5f)
+                //If not hiden you will die
+                if (t_deactivate > 8f)
                 {
                     spotLight.enabled = true;
+                    knok_knok.volume -= 1.3f;
 
                     anim.SetBool("Open", true);
 
                     canKill = true;
 
-                    if (t_deactivate > 5.02f)
+                    if (t_deactivate > 8.02f)
                     {
                         if (!isSave)
                         {
@@ -130,7 +125,7 @@ public class Bonnie_Behaviour : MonoBehaviour
                         }
                     }
 
-                    if (t_deactivate > 6.2f)
+                    if (t_deactivate > 9.2f && !dead)
                     {
                         anim.SetBool("Open", false);
                         spotLight.enabled = false;
@@ -165,10 +160,24 @@ public class Bonnie_Behaviour : MonoBehaviour
                     growl.Play();
                 }
 
+                if (t_deactivate >= 2f && t_deactivate <= 2.2f)
+                {
+                    knok_knok.volume += 0.5f;
+                    knok_knok.Play();
+                    //knok_knok.volume -= 0.5f;
+                }
+
+                if (t_deactivate >= 5f && t_deactivate <= 5.2f)
+                {
+                    knok_knok.volume += 0.8f;
+                    knok_knok.Play();
+                    //knok_knok.volume -= 0.8f;
+                }
+
                 t_deactivate += Time.deltaTime;
             }
 
-            if (t_deactivate > 5f)
+            if (t_deactivate > 8f)
             {
                 spotLight.enabled = true;
 
