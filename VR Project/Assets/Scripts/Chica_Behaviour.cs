@@ -21,7 +21,7 @@ public class Chica_Behaviour : MonoBehaviour
 
     public GameObject chica_Jumpscare;
 
-    Animator animator;
+    public Animator animator;
     public VideoClip[] videoClipList;
     public VideoClip[] AddsClipList;
     public AudioSource Growl;
