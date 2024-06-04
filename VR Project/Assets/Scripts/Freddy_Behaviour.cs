@@ -94,7 +94,9 @@ public class Freddy_Behaviour : MonoBehaviour
                                     ligthsToTurnOff[i].SetActive(false);
                                     timeSwitchLigths = 0;
                                 }
+                                
                             }
+                            timeSwitchLigths = 0;
                         }
 
                         for (int i = 0; i < ligthsToTurnOff.Count; i++)
@@ -126,6 +128,13 @@ public class Freddy_Behaviour : MonoBehaviour
                 }
                 else
                 {
+                    for (int i = 0; i < ligthsToTurnOff.Count; i++)
+                    {
+                        if (!ligthsToTurnOff[i].active && timeSwitchLigths >= 0.3f)
+                        {
+                            ligthsToTurnOff[i].SetActive(true);
+                        }
+                    }
                     if (firstChangePerHour[(int)isHour.currentHour] < time)
                     {
                         time = 0.0f;
