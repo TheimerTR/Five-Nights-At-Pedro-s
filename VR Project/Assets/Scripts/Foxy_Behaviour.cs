@@ -136,14 +136,22 @@ public class Foxy_Behaviour : MonoBehaviour
                 WaitTime = Timer + TimeToKill;
             }
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Up"))
+            if (HasApperared)
             {
-                Debug.Log("IS_IDLE");
+                TimerToMoveUp += Time.deltaTime;
+            }
+
+            if (TimerToMoveUp >= TimeToMoveUp)
+            {
+                animator.SetTrigger("GoUp");
+            }
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Up") || animator.GetCurrentAnimatorStateInfo(0).IsName("Start_Up"))
+            {
                 isVulnerable = false;
             }
             else
             {
-                Debug.Log("NO_IDLE");
                 isVulnerable = true;
             }
 
