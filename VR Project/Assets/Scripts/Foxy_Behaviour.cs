@@ -31,7 +31,7 @@ public class Foxy_Behaviour : MonoBehaviour
     bool dead = false;
     public bool isVulnerable = false;
     float passScene = 0f;
-    public GameObject chica_Jumpscare;
+    public GameObject JumpscareAnim;
 
     // Tutorial
     public bool isTutorial = false;
@@ -110,7 +110,7 @@ public class Foxy_Behaviour : MonoBehaviour
                 if (Timer > WaitTime && HasApperared)
                 {
                     dead = true;
-                    chica_Jumpscare.SetActive(true);
+                    JumpscareAnim.SetActive(true);
                     Jumpscare.Play();
                     Debug.Log("FoxyKill!");
                     Timer = 0;
@@ -171,7 +171,7 @@ public class Foxy_Behaviour : MonoBehaviour
             {
                 // Don't kill, but jumpscare to learn
                 //dead = true;
-                chica_Jumpscare.SetActive(true);
+                JumpscareAnim.SetActive(true);
                 Jumpscare.Play();
                 //Debug.Log("FoxyKill!");
                 //Timer = 0;
