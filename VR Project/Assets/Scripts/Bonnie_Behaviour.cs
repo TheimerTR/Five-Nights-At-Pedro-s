@@ -87,20 +87,6 @@ public class Bonnie_Behaviour : MonoBehaviour
                         growl.Play();
                     }
 
-                    if (t_deactivate >= 2f && t_deactivate <= 2.2f)
-                    {
-                        knok_knok.volume += 0.5f;
-                        knok_knok.Play();
-                        //knok_knok.volume -= 0.5f;
-                    }
-
-                    if (t_deactivate >= 5f && t_deactivate <= 5.2f)
-                    {
-                        knok_knok.volume += 0.8f;
-                        knok_knok.Play();
-                        //knok_knok.volume -= 0.8f;
-                    }
-
                     t_deactivate += Time.deltaTime;
                 }
 
