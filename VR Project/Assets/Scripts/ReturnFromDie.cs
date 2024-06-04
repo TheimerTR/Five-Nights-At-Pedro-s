@@ -21,7 +21,7 @@ public class ReturnFromDie : MonoBehaviour
 
         if(timerToReturn > timeToSceneReturn)
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("Level Selector");
             timerToReturn = 0;
         }
     }
