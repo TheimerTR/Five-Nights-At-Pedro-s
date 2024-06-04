@@ -31309,12 +31309,12 @@ MonoBehaviour:
   - {fileID: 2139484734}
   - {fileID: 1778260192}
   TimeToAppear:
-  - 5
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 45
+  - 60
+  - 60
+  - 55
+  - 50
+  - 50
   WaitTime: 0
   TimeToKill: 10
   Timer: 0
