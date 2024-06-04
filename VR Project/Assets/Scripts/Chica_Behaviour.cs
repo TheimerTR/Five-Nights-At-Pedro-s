@@ -33,7 +33,7 @@ public class Chica_Behaviour : MonoBehaviour
     bool dead = false;
     float passScene = 0f;
 
-    int CountToKillNotAdd = 0;
+    public int CountToKillNotAdd = 0;
 
     // Tutorial
     public bool isTutorial = false;
@@ -189,6 +189,7 @@ public class Chica_Behaviour : MonoBehaviour
                 tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
                 timeToNextAd = Random.Range(minWaitTimeForAdd[(int)isHour.currentHour], maxWaitTimeForAdd[(int)isHour.currentHour]);
                 time = 0;
+                CountToKillNotAdd = 0;
                 angry = false; 
                 
                 if (isTutorial)

@@ -206,7 +206,6 @@ public class Bonnie_Behaviour : MonoBehaviour
         {
            if (other.tag == "Player")
            {
-               Debug.Log("YOU ARE SAVE");
                isSave = true;
 
                if (isTutorial)
@@ -227,7 +226,6 @@ public class Bonnie_Behaviour : MonoBehaviour
     {
         if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            Debug.Log("YOU ARE NOT SAVE");
             isSave = false;
         }
     }
