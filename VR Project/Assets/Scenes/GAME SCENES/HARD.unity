@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOut: 0
-  freddy: {fileID: 0}
+  freddy: {fileID: 943123140}
   plushieNumber: 1
 --- !u!65 &52516010
 BoxCollider:
@@ -30309,7 +30309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOut: 0
-  freddy: {fileID: 0}
+  freddy: {fileID: 943123140}
   plushieNumber: 0
 --- !u!65 &1771181763
 BoxCollider:

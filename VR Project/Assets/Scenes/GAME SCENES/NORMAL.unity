@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOut: 0
-  freddy: {fileID: 0}
+  freddy: {fileID: 943123140}
   plushieNumber: 0
 --- !u!65 &4073650
 BoxCollider:
@@ -420,9 +420,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4073648}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 10.398849, y: 31.447006, z: -2.076444}
-  m_LocalScale: {x: 0.07967, y: 0.07967, z: 0.07967}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -3.500002, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999876, y: 0.99998736, z: 0.99998736}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 466632800}
@@ -430,8 +430,8 @@ Transform:
   - {fileID: 688473752}
   - {fileID: 1435416797}
   - {fileID: 1316500109}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 943123141}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &6575719
 GameObject:
@@ -12794,6 +12794,8 @@ Transform:
   - {fileID: 1260613619}
   - {fileID: 1317492271}
   - {fileID: 1362012896}
+  - {fileID: 1257925419}
+  - {fileID: 4073654}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -16933,7 +16935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOut: 0
-  freddy: {fileID: 0}
+  freddy: {fileID: 943123140}
   plushieNumber: 1
 --- !u!65 &1257925415
 BoxCollider:
@@ -17196,9 +17198,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257925413}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 10.12, y: 31.447006, z: -2.076444}
-  m_LocalScale: {x: 0.07967, y: 0.07967, z: 0.07967}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999876, y: 0.99998736, z: 0.99998736}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1404976466}
@@ -17206,8 +17208,8 @@ Transform:
   - {fileID: 1175569985}
   - {fileID: 811847774}
   - {fileID: 698654996}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 943123141}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1260613618
 GameObject:
