@@ -12116,9 +12116,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHour: {fileID: 919132147710694791}
   angry: 0
-  timeForKill: []
-  minWaitTimeForAdd: []
-  maxWaitTimeForAdd: []
+  timeForKill:
+  - 15
+  - 15
+  - 12.5
+  - 12.5
+  - 10
+  - 10
+  minWaitTimeForAdd:
+  - 90
+  - 90
+  - 40
+  - 100
+  - 100
+  - 60
+  maxWaitTimeForAdd:
+  - 90
+  - 90
+  - 40
+  - 100
+  - 100
+  - 60
   timeToNextAd: 0
   tv: {fileID: 1059676666}
   chica_Jumpscare: {fileID: 883472657}
@@ -14442,19 +14460,19 @@ MonoBehaviour:
   time: 0
   isHour: {fileID: 919132147710694791}
   firstChangePerHour:
-  - 30
-  - 28
   - 25
-  - 21
-  - 15
-  - 10
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
   extraChangePerHour:
+  - 25
+  - 25
   - 20
-  - 18
+  - 20
   - 15
-  - 12
-  - 10
-  - 8
+  - 15
   flashlightReferece: {fileID: 3469287837767289938}
   ligthsToTurnOff:
   - {fileID: 1136830158}
@@ -23002,7 +23020,13 @@ MonoBehaviour:
   t_activate: 0
   t_deactivate: 0
   time_to_activate: 0
-  timeToAppear: []
+  timeToAppear:
+  - 35
+  - 80
+  - 85
+  - 85
+  - 80
+  - 80
   canKill: 0
   isSave: 0
   chica_Jumpscare: {fileID: 1096456192}
@@ -36988,7 +37012,13 @@ MonoBehaviour:
   SpawnPoint:
   - {fileID: 2139484734}
   - {fileID: 1778260192}
-  TimeToAppear: []
+  TimeToAppear:
+  - 45
+  - 25
+  - 50
+  - 65
+  - 65
+  - 60
   WaitTime: 0
   TimeToKill: 10
   Timer: 0
@@ -38253,7 +38283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0632f83fa9a9349899ca3c8b35c8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedUpwards: 0
+  speedUpwards: 5
   DownSpeed: 20
   isBeeingPushed: 0
   stopPushing: 0
