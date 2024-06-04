@@ -12,7 +12,9 @@ public class Foxy_Behaviour : MonoBehaviour
     public float TimeToAppear;
     public float WaitTime;
     public float TimeToKill;
-    public float Timer = 0;
+    public float Timer = 0f;
+    public float TimeToMoveUp = 0f;
+    float TimerToMoveUp = 0f;
 
     public int Flashed;
 
@@ -27,6 +29,7 @@ public class Foxy_Behaviour : MonoBehaviour
     public Animator animator;
 
     bool dead = false;
+    public bool isVulnerable = false;
     float passScene = 0f;
     public GameObject chica_Jumpscare;
 
@@ -40,6 +43,7 @@ public class Foxy_Behaviour : MonoBehaviour
     {
         Foxy.SetActive(false);
         HasApperared = false;
+        isVulnerable = false;
     }
 
     // Update is called once per frame
@@ -64,7 +68,7 @@ public class Foxy_Behaviour : MonoBehaviour
                 switch (isHour.currentHour)
                 {
                     case SixAM.Hour.ZERO_AM:
-                        TimeToAppear = 30f;
+                        TimeToAppear = 3f;
                         break;
                     case SixAM.Hour.ONE_AM:
                         TimeToAppear = 26f;
@@ -95,14 +99,34 @@ public class Foxy_Behaviour : MonoBehaviour
                     transform.position = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
                     transform.rotation = SpawnPoint[Random.Range(0, SpawnPoint.Length)].rotation;
 
-                    WaitTime = Timer + TimeToKill;
+                    WaitTime = Timer + TimeToKill + TimeToMoveUp;
                 }
 
-                if (Flashed >= 5 && HasApperared)
+                if (HasApperared) 
+                {
+                    TimerToMoveUp += Time.deltaTime;
+                }
+
+                if(TimerToMoveUp >= TimeToMoveUp)
+                {
+                    animator.SetTrigger("GoUp");
+                }
+
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Up") || animator.GetCurrentAnimatorStateInfo(0).IsName("Start_Up"))
+                {
+                    isVulnerable = false;
+                }
+                else
+                {
+                    isVulnerable = true;
+                }
+
+                if (Flashed >= 5 && HasApperared && isVulnerable)
                 {
                     HasApperared = false;
                     Timer = 0;
                     Flashed = 0;
+                    TimerToMoveUp = 0;
                     Foxy.SetActive(false);
                     Growl.Play();
                 }
@@ -136,7 +160,18 @@ public class Foxy_Behaviour : MonoBehaviour
                 WaitTime = Timer + TimeToKill;
             }
 
-            if (Flashed >= 5 && HasApperared)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Up"))
+            {
+                Debug.Log("IS_IDLE");
+                isVulnerable = false;
+            }
+            else
+            {
+                Debug.Log("NO_IDLE");
+                isVulnerable = true;
+            }
+
+            if (Flashed >= 5 && HasApperared && isVulnerable)
             {
                 HasApperared = false;
                 Timer = 0;
@@ -170,7 +205,7 @@ public class Foxy_Behaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Foxy_FlashLight")
+        if (other.tag == "Foxy_FlashLight" && isVulnerable)
         {
             animator.SetTrigger("IsFlashed");
             Flashed++;
