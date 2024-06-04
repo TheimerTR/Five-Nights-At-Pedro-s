@@ -9,7 +9,7 @@ public class Foxy_Behaviour : MonoBehaviour
     public GameObject Foxy;
     public Transform[] SpawnPoint;
 
-    public float TimeToAppear;
+    public List<float> TimeToAppear;
     public float WaitTime;
     public float TimeToKill;
     public float Timer = 0f;
@@ -65,31 +65,7 @@ public class Foxy_Behaviour : MonoBehaviour
 
                 Timer += Time.deltaTime;
 
-                switch (isHour.currentHour)
-                {
-                    case SixAM.Hour.ZERO_AM:
-                        TimeToAppear = 3f;
-                        break;
-                    case SixAM.Hour.ONE_AM:
-                        TimeToAppear = 26f;
-                        break;
-                    case SixAM.Hour.TWO_AM:
-                        TimeToAppear = 24f;
-                        break;
-                    case SixAM.Hour.THREE_AM:
-                        TimeToAppear = 20f;
-                        break;
-                    case SixAM.Hour.FOUR_AM:
-                        TimeToAppear = 19f;
-                        break;
-                    case SixAM.Hour.FIVE_AM:
-                        TimeToAppear = 18f;
-                        break;
-                    default:
-                        break;
-                }
-
-                if (Timer > TimeToAppear && !HasApperared)
+                if (Timer > TimeToAppear[(int)isHour.currentHour] && !HasApperared)
                 {
                     HasApperared = true;
                     Flashed = 0;
@@ -145,9 +121,9 @@ public class Foxy_Behaviour : MonoBehaviour
         else
         {
             Timer += Time.deltaTime;
-            TimeToAppear = 5f;
+            //TimeToAppear = 5f;
 
-            if (Timer > TimeToAppear && !HasApperared)
+            if (Timer > 5f && !HasApperared)
             {
                 HasApperared = true;
                 Flashed = 0;

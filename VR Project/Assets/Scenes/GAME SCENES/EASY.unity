@@ -11393,7 +11393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FreddyReturnPosition: {fileID: 1362012895}
   FreddyListRandomPositions: {fileID: 64836295}
-  positionShelve: []
   plushies:
   - {fileID: 2022612384}
   - {fileID: 559481394}
@@ -28701,7 +28700,13 @@ MonoBehaviour:
   SpawnPoint:
   - {fileID: 2139484734}
   - {fileID: 1778260192}
-  TimeToAppear: 0
+  TimeToAppear:
+  - 55
+  - 20
+  - 20
+  - 15
+  - 10
+  - 10
   WaitTime: 0
   TimeToKill: 10
   Timer: 0
