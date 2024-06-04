@@ -56,13 +56,13 @@ public class Puppet_Behaviour : MonoBehaviour
 
                 PushPuppet();
 
-                if (puppetKill)
+                if (puppetKill && !dead)
                 {
                     dead = true;
                     chica_Jumpscare.SetActive(true);
                     Jumpscare.Play();
                     isBeeingPushed = false;
-                    Debug.Log("DEAD");
+                    Debug.Log("DEAD Puppet");
                 }
             }
         }
@@ -101,7 +101,7 @@ public class Puppet_Behaviour : MonoBehaviour
                 }
             }
 
-            if (other.tag == "PuppetKill" && !isTutorial)
+            if (other.tag == "PuppetKill" && !isTutorial && !puppetKill)
             {
                 puppetKill = true;
             }
