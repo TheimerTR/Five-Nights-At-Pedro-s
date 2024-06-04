@@ -120,8 +120,11 @@ public class Bonnie_Behaviour : MonoBehaviour
                         {
                             //Debug.Log("YOU ARE DEAD");
                             dead = true;
+                            Debug.Log("YOU ARE DEAD Bonnie");
                             chica_Jumpscare.SetActive(true);
                             jumpscare.Play();
+                            t_deactivate = 0;
+                            t_activate = 0f;
                         }
                     }
 
@@ -215,25 +218,22 @@ public class Bonnie_Behaviour : MonoBehaviour
     {
         if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
-            if (canKill)
-            {
-                if (other.tag == "Player")
-                {
-                    Debug.Log("YOU ARE SAVE");
-                    isSave = true;
+           if (other.tag == "Player")
+           {
+               Debug.Log("YOU ARE SAVE");
+               isSave = true;
 
-                    if (isTutorial)
-                    {
-                        GameObject welldone = GameObject.Find("CongratsSoundEffect");
-                        AudioSource congrats = welldone.GetComponent<AudioSource>();
-                        congrats.Play();
+               if (isTutorial)
+               {
+                   GameObject welldone = GameObject.Find("CongratsSoundEffect");
+                   AudioSource congrats = welldone.GetComponent<AudioSource>();
+                   congrats.Play();
 
-                        player.GetComponent<TrackTutorials>().UpdateTutorials();
-                        this.enabled = false;
-                        this.gameObject.SetActive(false);
-                    }
-                }
-            }
+                   player.GetComponent<TrackTutorials>().UpdateTutorials();
+                   this.enabled = false;
+                   this.gameObject.SetActive(false);
+               }
+           }
         }
     }
 
@@ -241,6 +241,7 @@ public class Bonnie_Behaviour : MonoBehaviour
     {
         if (isHour.currentHour != SixAM.Hour.SIX_AM)
         {
+            Debug.Log("YOU ARE NOT SAVE");
             isSave = false;
         }
     }
