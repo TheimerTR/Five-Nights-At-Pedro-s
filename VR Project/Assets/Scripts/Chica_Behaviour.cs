@@ -138,27 +138,9 @@ public class Chica_Behaviour : MonoBehaviour
 
         else
         {            
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                angry = !angry;
-                time = 0;
-                timeToNextAd = Random.Range(minWaitTimeForAdd[(int)isHour.currentHour], maxWaitTimeForAdd[(int)isHour.currentHour]);
-
-                if (!angry)
-                {
-                    tv.clip = videoClipList[Random.Range(0, videoClipList.Length)];
-                    animator.SetBool("isAngry", false);
-                }
-                else
-                {
-                    tv.clip = AddsClipList[Random.Range(0, AddsClipList.Length)];
-                    animator.SetBool("isAngry", true);
-                }
-            }
-
             time += Time.deltaTime;
 
-            if (time >= timeToNextAd && !angry)
+            if (time >= 8 && !angry)
             {
                 tv.clip = AddsClipList[Random.Range(0, AddsClipList.Length)];
                 Growl.Play();

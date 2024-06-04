@@ -17,6 +17,7 @@ public class Puppet_Behaviour : MonoBehaviour
 
     public SixAM isHour;
     public AudioSource Jumpscare;
+    public AudioSource musicPuppet;
 
     bool dead = false;
     float passScene = 0f;
@@ -33,6 +34,7 @@ public class Puppet_Behaviour : MonoBehaviour
         isBeeingPushed = false;
         stopPushing = false;
         puppetKill = false;
+        musicPuppet.Play();
     }
 
     // Update is called once per frame
@@ -78,6 +80,9 @@ public class Puppet_Behaviour : MonoBehaviour
 
         if (isBeeingPushed && !stopPushing && !puppetKill)
             gameObject.transform.localPosition += new Vector3(0, -DownSpeed * 0.00001f, 0);
+
+        musicPuppet.Stop();
+        musicPuppet.Play();
     }
 
     void OnTriggerEnter(Collider other)

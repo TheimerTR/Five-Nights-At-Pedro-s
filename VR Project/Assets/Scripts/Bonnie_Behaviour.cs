@@ -139,7 +139,7 @@ public class Bonnie_Behaviour : MonoBehaviour
 
         else
         {
-            time_to_activate = 2.5f;
+            time_to_activate = 5f;
 
             if (t_deactivate == 0)
             {
