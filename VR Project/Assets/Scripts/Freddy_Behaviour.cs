@@ -11,7 +11,6 @@ public class Freddy_Behaviour : MonoBehaviour
     //public List<Vector3> FreddyListRandomPositions;
     public GameObject FreddyReturnPosition;
     public GameObject FreddyListRandomPositions;
-    public Vector3[] positionShelve; //This are their positions of oriigin for when then return to the shelve
     public GameObject[] plushies;
     public bool[] plushiesOut;
     public int plushesOutOfShelve;
@@ -39,15 +38,11 @@ public class Freddy_Behaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        positionShelve = new Vector3[3];
         plushiesOut = new bool[3];
         for (int i = 0; i < plushiesOut.Length; i++)
         {
             plushiesOut[i] = false;
         }
-        positionShelve[0] = new Vector3(-3.5f, 0.2f, 0f);
-        positionShelve[1] = new Vector3(0f, 0.2f, 0f);
-        positionShelve[2] = new Vector3(3.5f, 0.2f, 0f);
 
         positionsPlushies = new List<int>();
 

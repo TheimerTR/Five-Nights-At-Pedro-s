@@ -1627,7 +1627,7 @@ Transform:
   - {fileID: 1778260192}
   - {fileID: 2068500160}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120010160
 GameObject:
@@ -8296,7 +8296,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 75.626, y: -59.631, z: -34.1}
 --- !u!1 &706201081
 GameObject:
@@ -8480,7 +8480,7 @@ Transform:
   - {fileID: 927717307}
   - {fileID: 1914955444}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &723795543
 GameObject:
@@ -9600,8 +9600,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHour: {fileID: 919132147710694791}
   angry: 0
-  timeForClipChange: 70
-  timeForKill: 5
+  timeForKill:
+  - 20
+  - 20
+  - 17.5
+  - 17.5
+  - 15
+  - 15
+  minWaitTimeForAdd:
+  - 100
+  - 130
+  - 130
+  - 130
+  - 90
+  - 90
+  maxWaitTimeForAdd:
+  - 100
+  - 140
+  - 140
+  - 140
+  - 100
+  - 100
+  timeToNextAd: 0
   tv: {fileID: 1059676666}
   chica_Jumpscare: {fileID: 883472657}
   videoClipList:
@@ -9620,9 +9640,6 @@ MonoBehaviour:
   chicaScreamer: {fileID: 844106799}
   eye_R: {fileID: 339440929}
   eye_L: {fileID: 1895945625}
-  minWaitTimeForAdd: 20
-  maxWaitTimeForAdd: 80
-  timeToNextAd: 0
   isTutorial: 0
   player: {fileID: 0}
   nextTutorial: {fileID: 0}
@@ -10994,7 +11011,7 @@ Transform:
   - {fileID: 844106797}
   - {fileID: 995960855}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923903193
 GameObject:
@@ -11386,19 +11403,19 @@ MonoBehaviour:
   time: 0
   isHour: {fileID: 919132147710694791}
   firstChangePerHour:
+  - 50
+  - 45
+  - 40
+  - 35
   - 30
-  - 28
   - 25
-  - 21
-  - 15
-  - 10
   extraChangePerHour:
-  - 20
-  - 18
-  - 15
-  - 12
-  - 10
-  - 8
+  - 35
+  - 35
+  - 30
+  - 30
+  - 25
+  - 25
   flashlightReferece: {fileID: 3469287837767289938}
   ligthsToTurnOff:
   - {fileID: 1136830158}
@@ -11435,7 +11452,7 @@ Transform:
   - {fileID: 1317492271}
   - {fileID: 1362012896}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &945329127
 GameObject:
@@ -11809,7 +11826,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &992880171
 MonoBehaviour:
@@ -12956,8 +12973,9 @@ Transform:
   - {fileID: 1769771611}
   - {fileID: 1713757985}
   - {fileID: 543450653666943422}
+  - {fileID: 2128876704}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1135294175
 PrefabInstance:
@@ -16524,6 +16542,13 @@ MonoBehaviour:
   t_activate: 0
   t_deactivate: 0
   time_to_activate: 0
+  timeToAppear:
+  - 50
+  - 240
+  - 240
+  - 240
+  - 240
+  - 240
   canKill: 0
   isSave: 0
   chica_Jumpscare: {fileID: 883472657}
@@ -23304,7 +23329,7 @@ Transform:
   - {fileID: 1992887502}
   - {fileID: 904870299}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609197315
 GameObject:
@@ -25444,7 +25469,7 @@ Transform:
   - {fileID: 13584742}
   - {fileID: 158263576}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778260191
 GameObject:
@@ -27496,7 +27521,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1924114994
 PrefabInstance:
@@ -29631,15 +29656,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128876700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.5036, y: 31.3103, z: -4.402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.47317123, y: -0.79741096, z: -1.6016011}
   m_LocalScale: {x: 0.2045, y: 0.32079935, z: 0.2045}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1240737587951392229}
   - {fileID: 1782052305}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1129630782}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2128876705
 MonoBehaviour:
@@ -29653,7 +29678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0632f83fa9a9349899ca3c8b35c8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speedUpwards: 0
   DownSpeed: 20
   isBeeingPushed: 0
   stopPushing: 0
@@ -31375,7 +31400,7 @@ Transform:
   - {fileID: 1357039976}
   - {fileID: 1093964622}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -91.762, y: -35.22699, z: -33.544006}
 --- !u!4 &543450651963707196
 Transform:
@@ -31667,7 +31692,7 @@ Transform:
   - {fileID: 4789494391660303286}
   - {fileID: 483095109}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 17.252}
 --- !u!4 &549546452411878543
 Transform:
