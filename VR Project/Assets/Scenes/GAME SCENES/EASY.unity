@@ -29000,11 +29000,11 @@ MonoBehaviour:
   - {fileID: 1778260192}
   TimeToAppear:
   - 55
-  - 20
-  - 20
-  - 15
-  - 10
-  - 10
+  - 70
+  - 70
+  - 65
+  - 60
+  - 35
   WaitTime: 0
   TimeToKill: 10
   Timer: 0
