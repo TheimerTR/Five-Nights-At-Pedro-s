@@ -41586,7 +41586,7 @@ MonoBehaviour:
   isSixAM_Video: {fileID: 32900000, guid: 37cb6b3da6dc7e34196c6dd8849cb05f, type: 3}
   directionalLight: {fileID: 705507994}
   currentHour: 0
-  rain: {fileID: 0}
+  rain: {fileID: 1470678072}
   rainSound: {fileID: 13584741}
   AmbientSound: {fileID: 158263575}
   MusicSound: {fileID: 435952122}

@@ -12,8 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/GAME SCENES/Level Selector.unity
     guid: 66e7df0916f10f841b3f3f18cf873285
   - enabled: 1
-    path: Assets/Scenes/MAIN.unity
-    guid: 92cc0b238455ed94d8d089fda4fb9199
+    path: Assets/Scenes/GAME SCENES/EASY.unity
+    guid: 31fc1296429cd3344ae06853f08f0e8c
+  - enabled: 1
+    path: Assets/Scenes/GAME SCENES/NORMAL.unity
+    guid: 961c188386d6b5745a4b5d6aa0474de3
+  - enabled: 1
+    path: Assets/Scenes/GAME SCENES/HARD.unity
+    guid: ee71df0d2c0343742843178aee72d98b
   - enabled: 1
     path: Assets/Scenes/GAME SCENES/Dead.unity
     guid: 7d88989ba4227db4f9fa4c81ef9cf518

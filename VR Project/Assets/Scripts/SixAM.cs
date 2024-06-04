@@ -1,10 +1,12 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class SixAM : MonoBehaviour
 {
@@ -42,6 +44,9 @@ public class SixAM : MonoBehaviour
     public float DayTimer = 0;
 
     public float TimeTransition;
+    public float TimerToReturn = 0;
+
+    public bool ReturnToScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -77,7 +82,7 @@ public class SixAM : MonoBehaviour
             AmbientSound.Stop();
             MusicSound.Stop();
 
-            if(DayTimer < 1)
+            if (DayTimer < 1)
             {
                 DayTimer += Time.deltaTime / TimeTransition;
 
@@ -87,9 +92,20 @@ public class SixAM : MonoBehaviour
                 Debug.Log("YOU WON!");
             }
 
-            if(DayTimer >= 1)
+            if (DayTimer >= 1)
             {
                 win = false;
+                ReturnToScene = true;
+            }
+        }
+
+        if (ReturnToScene)
+        {
+            TimerToReturn += Time.deltaTime;
+
+            if (TimerToReturn >= 12)
+            {
+                SceneManager.LoadScene("Level Selector");
             }
         }
     }
