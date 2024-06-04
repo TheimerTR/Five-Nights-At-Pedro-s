@@ -25,6 +25,7 @@ public class ChangeDifficulty : MonoBehaviour
     {
         difficulty = DIFFICULTY.TUTORIAL;
         text.text = difficulty.ToString();
+        CS_passToGame.scene = difficulty.ToString();
     }
 
     // Update is called once per frame
