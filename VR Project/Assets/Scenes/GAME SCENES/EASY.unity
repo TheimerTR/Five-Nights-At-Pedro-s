@@ -10937,6 +10937,7 @@ MonoBehaviour:
   timeToNextAd: 0
   tv: {fileID: 1059676666}
   chica_Jumpscare: {fileID: 883472657}
+  animator: {fileID: 0}
   videoClipList:
   - {fileID: 32900000, guid: f7ad8494e8a8635419a3a50916473c15, type: 3}
   - {fileID: 32900000, guid: a087ea0a01996f94db9f0112facc1a60, type: 3}
@@ -30549,7 +30550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0632f83fa9a9349899ca3c8b35c8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedUpwards: 0
+  speedUpwards: 3
   DownSpeed: 20
   isBeeingPushed: 0
   stopPushing: 0
