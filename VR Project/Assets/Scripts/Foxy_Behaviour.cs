@@ -68,7 +68,7 @@ public class Foxy_Behaviour : MonoBehaviour
                 switch (isHour.currentHour)
                 {
                     case SixAM.Hour.ZERO_AM:
-                        TimeToAppear = 3f;
+                        TimeToAppear = 30f;
                         break;
                     case SixAM.Hour.ONE_AM:
                         TimeToAppear = 26f;
