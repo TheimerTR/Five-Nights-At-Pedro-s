@@ -248,12 +248,17 @@ public class Freddy_Behaviour : MonoBehaviour
                 if (positionsPlushies[i] != pos)
                 {
                     checkAgain = false;
+                    
                     //break;
                 }
                 else
                 {
                     checkAgain = true;
-                    pos = Random.Range(0, list.Count);
+                    pos += 1;
+                    if(pos == list.Count) 
+                    {
+                        pos = 0;
+                    }
                 }
             }
         }
